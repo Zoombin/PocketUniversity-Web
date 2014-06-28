@@ -1,0 +1,51 @@
+<include file="_header" />
+<script src="../Public/js/vote.js?20131031" type="text/javascript"></script>
+
+<div class="news">
+    <div class="news_menu"><img src="../Public/fimages/menu_person.gif" alt="" /></div>
+    <?php if(isset($keyword)):?>
+    <div class="person_search">搜索“<span class="red b">{$keyword}</span>”的相关结果</div>
+    <?php endif;?>
+    <div class="member_add">
+        <?php if($event['isEnd'] || !$event['isTicket']):?>
+            <span class="red b">投票已关闭</span>
+        <?php else:?>
+            投票规则：每人最多可投{$event['maxVote']}票、
+            <?php if(!$event['repeated_vote']):?>不<?php endif;?>可重复投票、
+            <?php if($event['allTicket']):?>票必须全部投完才生效<?php else:?>票不必全部投完<?php endif;?>
+        <?php endif;?>
+    </div>
+    <div class="person_list">
+        <ul>
+            <volist name="data" id='vo'>
+            <li>
+                <div class="person_list_photo">
+                    <a href="{:U('/Front/playerDetails',array('id'=>$eventId,'pid'=>$vo['id']))}" title="{$vo.realname}">
+                        <img src="{$vo.path|getThumb=###,163,204,c}" alt="" /></a></div>
+                <div class="person_list_prov b c3">{$vo.realname}</div>
+                <div class="person_list_prov">{$vo.school}</div>
+                <div class="person_list_prov"><span class="red">{$vo.ticket}</span>票
+                    <a href="{:U('event/Front/playerDetails',array('id'=>$eventId,'pid'=>$vo['id'],'tab'=>3)).'#tab3'}">
+                        <span style="color:#31AFFF">{$vo.commentCount}评论</span></a>
+                </div>
+                <?php if($event['isTicket']):?>
+                <?php if($vo['stoped'] || $event['isEnd'] || !$event['isTicket']): ?>
+                    <div class="person_list_vote i4">终止投票</div>
+                <?php else:?>
+                    <?php if(in_array($vo['id'],$bandVote)):?>
+                            <div class="person_list_vote i4">您已投票</div>
+                    <?php elseif($restVote<=0): ?>
+                            <div class="person_list_vote i4">票已投完</div>
+                    <?php else:?>
+                        <div class="person_list_vote" onclick='post_vote({$eventId},{$vo.id},"{$vo.realname}")'>投TA一票</div>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <?php endif; ?>
+            </li>
+            </volist>
+        </ul>
+    </div>
+    <div class="page">{$html}</div>
+</div>
+
+<include file="_footer" />

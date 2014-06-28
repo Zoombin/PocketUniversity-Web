@@ -1,0 +1,58 @@
+<include file="_header" />
+<div class="so_main">
+    <include file="_tab" />
+    活动中选手数据的共享,2个关联活动中，选手上传资料的数据可以直接上传至另一个活动中，减少2次上传的麻烦
+    <div class="Toolbar_inbox">
+        <form action="__URL__&act=recommList" method="post">
+        <div class="page right">{$html}</div>
+        <a href="javascript:addRecomm();" class="btn_a"><span>添加关联活动</span></a>
+        <a href="javascript:delRecomm();" class="btn_a"><span>删除关联活动</span></a>
+            &nbsp;上传共享活动ID：<input name="eventId" type="text" value="{$eventId}">
+            接受共享活动ID：<input name="provId" type="text" value="{$provId}">
+            &nbsp;&nbsp;<input type="submit" class="btn_b" value="搜索" />
+        </form>
+    </div>
+
+    <div class="list">
+        <table id="document_list" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th style="width:30px;">
+                    <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+                    <label for="checkbox"></label>
+                </th>
+                <th>上传共享活动</th>
+                <th>接受共享活动</th>
+                <th>操作</th>
+            </tr>
+            <volist name="data" id='vo'>
+                <tr overstyle='on' id="list_{$vo.eventId}-{$vo.provId}">
+                    <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.eventId}-{$vo.provId}"></td>
+                    <td>ID: {$vo.eventId}<br/>{$vo.eventId|getEventName}</td>
+                    <td>ID: {$vo.provId}<br/>{$vo.provId|getEventName}</td>
+                    <td>
+                        <a href="javascript:delRecomm('{$vo.eventId}-{$vo.provId}');" >删除</a>
+                    </td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+    <div class="Toolbar_inbox">
+        <form action="__URL__&act=recommList" method="post">
+        <div class="page right">{$html}</div>
+        <a href="javascript:addRecomm();" class="btn_a"><span>添加关联活动</span></a>
+        <a href="javascript:delRecomm();" class="btn_a"><span>删除关联活动</span></a>
+            &nbsp;上传共享活动ID：<input name="eventId" type="text" value="{$eventId}">
+            接受共享活动ID：<input name="provId" type="text" value="{$provId}">
+            &nbsp;&nbsp;<input type="submit" class="btn_b" value="搜索" />
+        </form>
+    </div>
+</div>
+<script>
+    function addRecomm(){
+        ui.box.load('__URL__&act=addRecomm',{title:'添加关联活动'});
+    }
+    function delRecomm(id){
+        delList(U('event/Admin/delRecomm'),id);
+    }
+</script>
+<include file="_footer" />

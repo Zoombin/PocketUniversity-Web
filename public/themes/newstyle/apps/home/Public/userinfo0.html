@@ -1,0 +1,222 @@
+<include file="__THEME__/header" />
+<link href="../Public/login.css" rel="stylesheet" type="text/css" />
+<div class="content_holder">
+    <div class="content"><!-- 内容 begin  -->
+        <div class="main no_l">
+            <div class="mainbox boxspace">
+                <div class="mainbox_appR">
+                    <div class="reg_process">
+                        <div class="reg_process_on"><div>1.验证身份</div></div>
+                        <div class="reg_process_def"><div>2.填写基本信息</div></div>
+                        <div class="reg_process_def"><div>3.看看推荐的人</div></div>
+                        <div class="reg_process_def"><div>4.完成，进入我的首页</div></div>
+                    </div>
+                </div>
+                <div class="mainbox_appC boxspace_L">
+                    <div class="reg_box">
+                        <div class="left lineS_btm" style="width:100%">
+                            <h2 class="cBlue"><strong style="font-size:45px">01.</strong>验证身份</h2>
+                            <p class="cRed f16px" style="margin: 10px 0 20px 80px;">你已成功注册。</p>
+                        </div>
+                            <ul class="form_list">
+                                <li class="form_li">
+                                    <div class="reg_li_1">姓名：</div>
+                                    <div class="reg_li_2">
+                                        {$user.realname}
+                                        <input type="button" class="btn_green hand" value="手机验证" style="margin-left:10px"
+                                               onclick="show('v1','v2')"> 
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="form_list" id="v1" style="display:none;">
+                                <li class="form_li cRed">使用第三方短信群发，会存在一些收不到短信现象。请检查是否屏蔽垃圾短信，稍后再试，或联系我们的客服。验证码没有时间限制，收到后再登陆网站，输入手机号码和验证码即可进行身份验证！感谢您的谅解！</li>
+                                <li class="form_li">
+                                    <div class="reg_li_1">手机号码：</div>
+                                    <div class="reg_li_2">
+                                        <input type="text" id="mobile" value="" class="text35"/>
+                                    </div>
+                                    <div class="reg_li_3">
+                                        <input type="button" class="btn_getCode btn_green hand" value="发送验证码" onclick="getCode();">
+                                        <span class="sended"><span class="sec">{$restSec}</span>秒后可重发短信</span>
+                                    </div>
+                                </li>
+                                <li class="form_li">
+                                    <div class="reg_li_1">手机验证码：</div>
+                                    <div class="reg_li_2">
+                                        <input type="text" id="code" value="" class="text35"/>
+                                    </div>
+                                    <div class="reg_li_3">
+                                        <input type="button" class="btn_bindMobile btn_green hand" value="校验手机验证码" onclick="bindMobile();">
+                                    </div>
+                                    <br/>(注意：验证码输入3次错误失效！每天最多发送3次验证码)
+                                </li>
+                            </ul>
+                            <ul class="form_list" id="v2" style="display:none;">
+                                <li class="form_li cRed">尽量使用163或126网易邮箱。QQ邮箱由于我们发送太多，会存在延时或退回现象</li>
+                                <li class="form_li">
+                                    <div class="reg_li_1">邮箱：</div>
+                                    <div class="reg_li_2">
+                                        <input type="text" id="email" value="" class="text35"/>
+                                    </div>
+                                    <div class="reg_li_3">
+                                        <input type="button" class="btn_getCode btn_green hand" value="发送验证码" onclick="getCode2();">
+                                        <span class="sended"><span class="sec">{$restSec}</span>秒后可重发邮件</span>
+                                    </div>
+                                </li>
+                                <li class="form_li">
+                                    <div class="reg_li_1">邮箱验证码：</div>
+                                    <div class="reg_li_2">
+                                        <input type="text" id="code2" value="" class="text35"/>
+                                    </div>
+                                    <div class="reg_li_3">
+                                        <input type="button" class="btn_bindMobile btn_green hand" value="校验邮箱验证码" onclick="bindMobile2();">
+                                    </div>
+                                    <br/>(注意：验证码输入3次错误失效！每天最多发送3次验证码)
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="c"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<script>
+    var restSec = parseInt({$restSec});
+    var timeHandel;
+    $(function(){
+        if(restSec>0){
+            showTime();
+        }else{
+            $('.sended').hide();
+        }
+    })
+    function showTime(){
+        $('.btn_getCode').hide();
+        timeHandel = setInterval(changeTime, 1000);
+        $('.sended').show();
+    }
+    function changeTime(){
+        restSec--;
+        if(restSec == 0){
+            clearInterval(timeHandel);
+            $('.sended').hide();
+            $('.btn_getCode').show();
+        }
+        $('.sec').text(restSec);
+    }
+    function show(showId,hideId){
+        $('#'+hideId).hide();
+        $('#'+showId).show();
+    }
+    function getCode() {
+        var mobile = $('#mobile').val();
+        if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(mobile))){
+            $('#mobile').focus();
+            ui.error( '输入11位手机号码，注意多余空格' );
+            return false;
+        }
+        $('.btn_getCode').attr('disabled','true');
+        $('.btn_getCode').val('发送中 ...');
+        $.post("{:U('home/Public/mobileCode')}", {mobile:mobile}, function(res) {
+            if (res == '-2') {
+                $('#mobile').focus();
+                ui.error('输入11位手机号码，注意多余空格');
+            }else if (res == '-3') {
+                ui.error('5分钟内只能发送一次');
+            }else if (res == '-4') {
+                ui.error('1天内最多发送3次');
+            }else if (res == '-5') {
+                ui.error('该手机号码已绑定');
+            }else if (res == '0') {
+                ui.error('发送验证码短信失败，请稍后再试');
+            }else if (res == '1') {
+                restSec = 300;
+                $('.sec').text(restSec);
+                showTime();
+            }
+            $('.btn_getCode').removeAttr('disabled');
+            $('.btn_getCode').val('发送验证码');
+        });
+    }
+    function getCode2() {
+        var email = $('#email').val();
+        if(!(/^([a-za-z0-9]+[_|_|.]?)*[a-za-z0-9]+@([a-za-z0-9]+[_|_|.]?)*[a-za-z0-9]+.[a-za-z]{2,3}$/.test(email))){
+            $('#email').focus();
+            ui.error( '邮箱格式错误，注意多余空格' );
+            return false;
+        }
+        $('.btn_getCode').attr('disabled','true');
+        $('.btn_getCode').val('发送中 ...');
+        $.post("{:U('home/Public/emailCode')}", {email:email}, function(res) {
+            if (res == '-2') {
+                $('#email').focus();
+                ui.error('邮箱格式错误，注意多余空格');
+            }else if (res == '-3') {
+                ui.error('5分钟内只能发送一次');
+            }else if (res == '-4') {
+                ui.error('1天内最多发送3次');
+            }else if (res == '-5') {
+                ui.error('该邮箱已绑定');
+            }else if (res == '0') {
+                ui.error('发送验证码邮件失败，请稍后再试');
+            }else if (res == '1') {
+                restSec = 300;
+                $('.sec').text(restSec);
+                showTime();
+            }
+            $('.btn_getCode').removeAttr('disabled');
+            $('.btn_getCode').val('发送验证码');
+        });
+    }
+    function bindMobile() {
+        var mobile = $('#mobile').val();
+        if( mobile == 0 ) {
+            $('#mobile').focus();
+            ui.error( '请填写手机号码' );
+            return false;
+        }
+        var code = $('#code').val();
+        if( code == 0 ) {
+            $('#code').focus();
+            ui.error( '请填写验证码' );
+            return false;
+        }
+        $('.btn_bindMobile').attr('disabled','true');
+        $.post("{:U('home/Public/mobileBind')}", {mobile:mobile,code:code}, function(res) {
+            $('.btn_bindMobile').removeAttr('disabled');
+            if (res == '0') {
+                ui.error('验证失败');
+            }else if (res == '1') {
+                ui.success('验证成功');
+                window.location.href = "{:U('home/Public/userinfo')}";
+            }
+        });
+    }
+    function bindMobile2() {
+        var email = $('#email').val();
+        if( email == 0 ) {
+            $('#email').focus();
+            ui.error( '请填写邮箱' );
+            return false;
+        }
+        var code = $('#code2').val();
+        if( code == 0 ) {
+            $('#code2').focus();
+            ui.error( '请填写验证码' );
+            return false;
+        }
+        $('.btn_bindMobile').attr('disabled','true');
+        $.post("{:U('home/Public/emailBind')}", {email:email,code:code}, function(res) {
+            $('.btn_bindMobile').removeAttr('disabled');
+            if (res == '1') {
+                ui.success('验证成功');
+                window.location.href = "{:U('home/Public/userinfo')}";
+            }else{
+                ui.error('验证失败');
+            }
+        });
+    }
+</script>
+<include file="__THEME__/footer" />

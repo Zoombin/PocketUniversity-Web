@@ -1,0 +1,15 @@
+    <ul>
+        <volist name="install_app" id="vo">
+        <?php if(empty($vo['app_alias'])) continue;?>
+        <?php if($vo['category'] == $category):?>
+        <li>
+            <a href="{$vo.app_entry}" title="{$vo.description}" class="user_app_link" >
+            <div class="c1_list2_sublist_thumb">
+                <img src="{$vo.large_icon_url}" alt="" />
+            </div>
+            <div class="c1_list2_sublist_title">{$vo.app_alias}</div>
+            </a>
+        </li>
+        <?php endif;?>
+        </volist>
+    </ul>

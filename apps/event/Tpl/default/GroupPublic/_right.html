@@ -1,0 +1,64 @@
+
+<div class="hd_c_right">
+    <div class="code_school">
+    <div class="code_thumb"><a href="javascript:void(0)" onclick="showBimg('__THEME__/newimages/pu_android2b.png')"><img src="__THEME__/newimages/pu_android2.png" alt="安卓" /></a></div>
+    <div class="code_thumb1"><a href="javascript:void(0)" onclick="showBimg('__THEME__/newimages/pu_ios1b.png')"><img src="__THEME__/newimages/pu_ios1.png" alt="苹果" /></a></div>
+        <div class="code_btn">
+            <ul>
+                <li><a href="{:U('home/Public/android')}"><img style="width:100px;height:30px;" src="__THEME__/newimages/android.gif" alt="" /></a></li>
+                <li><a href="http://itunes.apple.com/cn/app/PocketUni/id685777413?mt=8"><img style="width:100px;height:30px;" src="__THEME__/newimages/iphone.gif" alt="" /></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="hd_c_right_menu i2">校园部落排行</div>
+    <div class="st_r_list">
+        <ul>
+            <volist  name="hot_group_list" id='vo'>
+                <li <eq name='i' value='5'> class="st2" </eq>>
+                    <div class="st_r_l_thumb"><a href="{:U('/GroupTopic/index', array('gid'=>$vo['id']))}" title="{$vo['name']}  |  {$vo['intro']|getShort=###,30,'…'}"><img src="{$vo['logo']|getGroupThumb}" alt="" /></a></div>
+                    <div class="st_r_l_infor ml10">
+                        <div class="st_r_l_t b f14 link"><a href="{:U('/GroupTopic/index', array('gid'=>$vo['id']))}" >{$vo.name}</a></div>
+                        <div class="st_r_l_m mt10">人气：{$vo.membercount}</div>
+                    </div>
+                </li>
+            </volist>
+        </ul>
+    </div>
+    <div class="hd_c_right_menu i2">最新校园部落</div>
+    <div class="st_r_list1">
+        <ul>
+            <volist  name="new_group_list" id='vo'>
+                <li >
+                    <div class="st_r_l_thumb1"><a href="{:U('/GroupTopic/index', array('gid'=>$vo['id']))}" title="{$vo['name']}  |  {$vo['intro']|getShort=###,30,'…'}"><img src="{$vo['logo']|getGroupThumb}" alt="" /></a></div>
+                    <div class="st_r_l_t1 h30"><a href="{:U('/GroupTopic/index', array('gid'=>$vo['id']))}" >{$vo.name}</a></div>
+                </li>
+            </volist>
+        </ul>
+    </div>
+  <?php if($smid) :?>
+    <div class="hd_c_right_menu i2">更多应用</div>
+    <div class="c1_list2_sublist">
+        <ul>
+            <volist name="install_app" id="vo">
+                <?php if($vo['app_name'] != 'group'):?>
+                <li>
+                    <a href="{$vo.app_entry}" title="{$vo.description}" class="user_app_link" target="_blank">
+                        <div class="c1_list2_sublist_thumb">
+                            <img width="44px;" height="44px;" src="{$vo.large_icon_url}" alt="" />
+                        </div>
+                        <div class="c1_list2_sublist_title">{$vo.app_alias}</div>
+                    </a>
+                </li>
+                <?php endif;?>
+            </volist>
+        </ul>
+    </div>
+   <?php endif;?>
+</div>
+</div>
+<script type="text/javascript">
+  function showBimg(path){
+      ui.box.show('<div style="width:300px;height:300px;"><img src="'+path+'" /></div>',{title:'二维码'});
+  }
+</script>

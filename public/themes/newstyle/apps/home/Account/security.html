@@ -1,0 +1,315 @@
+<include file="__THEME__/header" />
+<link href="../Public/account.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="../Public/js/account.js"></script>
+<div class="content_holder">
+<div class="content"><!-- 内容 begin  -->
+  <div class="main no_l"> <!-- 右侧内容 begin  -->
+    <div class="mainbox">
+      <div class="mainbox_appC no_r">
+    <!-- page_title end -->
+    <include file="_tab" />
+    <!-- 切换标签 end  -->
+
+    <div class="mainbox_C_C">
+		<div class="setupBox">
+		  <!-- 修改密码 -->
+          <div class="setItems">
+            <div class="setFold setUnfold" rel="base" >
+              <h2>修改密码</h2>
+            </div>
+            <div style="display: block;" class="setItemsInfo">
+		      <div class="data"><!-- 修改密码 begin  -->
+                          <?php if($_SESSION['md5pass']):?><span class="center cRed" style="padding-left: 140px;">系统安全策略升级，您的账号存在安全隐患，请修改密码!</span><?php endif;?>
+		            <dl class="set_basic">
+		                <form action="{:U('home/Account/doModifyPassword')}" method="post" class="form_validator" id="regform">
+		                <dd>
+		                    <label>原始密码：</label>
+		                    <div class="left">
+		                      <div class="left mr5"><input name="oldpassword" type="password" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" /></div>
+		                    </div>
+		                </dd>
+		                <dd>
+		                    <label>新密码：</label>
+		                    <div class="left">
+		                      <div class="left mr5"><input name="password" type="password" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" /></div>
+		                    </div>
+		                </dd>
+		                <dd>
+		                    <label>确认密码：</label>
+		                    <div class="left">
+		                      <div class="left mr5"><input name="repassword" type="password" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" /></div>
+		                    </div>
+		                </dd>
+		                <dd><label>&nbsp;</label><input type="submit" class="btn_b" value="保存" /></dd>
+		            </form>
+		           </dl>
+		        </div><!-- 修改密码 end  -->
+            </div>
+          </div>
+
+		  <!-- 修改密码 -->
+          <div class="setItems">
+            <div class="setFold" rel="email" >
+              <h2>绑定邮箱</h2>
+            </div>
+            <div style="display:none;"  class="setItemsInfo">
+		      <div class="data"><!-- 修改密码 begin  -->
+		            <dl class="set_basic">
+		                <dd>
+		                    <label>原始密保邮箱：</label>
+		                    <div class="left">
+		                      <div class="left mr5">{$user.email2}</div>
+		                    </div>
+		                </dd>
+		                <dd>
+		                    <label>新密保邮箱：</label>
+		                    <div class="left">
+		                      <div class="left mr5"><input id="newemail" type="text" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" /></div>
+		                    </div>
+		                </dd>
+                                <dd>
+		                    <label>PU平台登录密码：</label>
+		                    <div class="left">
+		                      <div class="left mr5"><input id="password" type="password" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" /></div>
+		                    </div>
+		                </dd>
+		                <dd>
+		                	<label>&nbsp;</label>
+		                	<input type="submit" class="btn_b" value="保存" id="btn_submit" onclick="modifyEmail();" />
+		                </dd>
+		           </dl>
+		        </div><!-- 修改密码 end  -->
+            </div>
+          </div>
+
+<!-- 绑定手机 -->
+<div class="setItems">
+    <div class="setFold" rel="mobile" >
+        <h2>绑定手机</h2>
+    </div>
+    <div style="display:none;"  class="setItemsInfo">
+        <div class="data">
+            <dl class="set_basic">
+                <?php if($user['mobile']):?>
+                <input type="hidden" id="hasMobile" value="1" />
+                <dd>
+                    <label>已绑定手机：</label>
+                    <div class="left">
+                        <div class="left mr5">{$user['mobile']}
+                        <input type="button" class="btn_green_w121 hand" value="更改手机号码" onclick="javascript:$('#editMobile').toggle();" />
+                        </div>
+                    </div>
+                </dd>
+                <?php else:?>
+                <input type="hidden" id="hasMobile" value="0" />
+                <dd>
+                    <label>&nbsp;</label>
+                    <div class="left">尚未绑定手机</div>
+                </dd>
+                <?php endif;?>
+                <div id="editMobile">
+                <dd>
+                    <label>手机号码：</label>
+                    <div class="left">
+                        <div class="left mr5">
+                            <input id="mobile" type="text" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" />
+                        </div>
+                    </div>
+                </dd>
+                <dd>
+                    <label>PU平台登录密码：</label>
+                    <div class="left">
+                        <div class="left mr5">
+                            <input id="orgpass" type="password" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" />
+                            <input type="button" class="btn_green_w121 hand" value="验证绑定手机" id="btn_bindMobile" onclick="bindMobile();" />
+                        </div>
+                    </div>
+                </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</div>
+<!-- 绑定手机 end  -->
+		  <if condition="$set_ucenter_username">
+          <!-- 设置UCenter账号-->
+          <div class="setItems">
+            <div class="setFold setUnfold" rel="ucenter" >
+              <h2>设置UCenter账号</h2>
+            </div>
+            <div style="display: block;" class="setItemsInfo">
+		      <div class="data"><!-- 修改密码 begin  -->
+		            <form action="{:U('home/Account/doModifyUCenter')}" method="post" class="form_validator">
+		              <ul>
+		                <li>
+		                    <div class="left alR" style="width: 15%;">UCenter：</div>
+		                    <div class="left" style="width: 50%;">
+		                      <div class="left mr5"><input name="username" type="text" value="{$uc_username}" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" <if condition="$uc_username">readonly</if> /></div>
+		                    </div>
+		                </li>
+		                <li>
+		                    <div class="left alR" style="width: 15%;">UCenter：</div>
+		                    <div class="left" style="width: 50%;">
+		                      <div class="left mr5"><input name="email" type="text" value="{$uc_email}" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" /></div>
+		                    </div>
+		                </li>
+		                <li>
+		                    <div class="left alR" style="width: 15%;">本站密码：</div>
+		                    <div class="left" style="width: 50%;">
+		                      <div class="left mr5"><input name="password" type="password" class="text" style="width:200px;" onfocus="this.className='text2'" onblur="this.className='text'" /></div>
+		                    </div>
+		                </li>
+		                <li>
+		                	<div class="left alR" style="width: 15%;">&nbsp;</div>
+		                	<div class="left" style="width: 50%;"><input type="submit" class="btn_b" value="保存" /></div>
+		                	<div class="left" style="width: 20%;">&nbsp;</div>
+		                	<div class="left" style="width: 15%;">&nbsp;</div>
+		                </li>
+		             </ul>
+		           </form>
+		      </div><!-- 修改密码 end  -->
+            </div>
+          </div>
+          </if>
+
+          {:Addons::hook('home_account_security_bottom')}
+        <div class="c"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 右侧内容 end  -->
+  <div class="c"></div>
+</div>
+</div>
+<!-- 内容 end -->
+<include file="__THEME__/footer" />
+
+<script>
+	$(document).ready(function(){
+		var hs = document.location.hash;
+		changeModel( hs.replace('#','') );
+		$('.setFold').click(function(){
+			if( $(this).attr('class')=='setFold' ){
+				changeModel( $(this).attr('rel') );
+			}else{
+				$(this).removeClass('setUnfold');
+				$(this).next('.setItemsInfo').hide();
+			}
+			location.href='#'+$(this).attr('rel');
+		})
+                if($('#hasMobile').val() == 1){
+                    $('#editMobile').hide();
+                }
+                if(restSec>0){
+                    showTime();
+                }else{
+                    $('#sended').hide();
+                }
+
+	});
+
+	//切换操作模块
+	function changeModel( type ){
+		var t = type || 'base';
+		$('.setFold').removeClass('setUnfold');
+		$('.setItemsInfo').hide();
+		var handle = $('div[rel="'+t+'"]');
+		handle.addClass('setUnfold');
+		handle.next('.setItemsInfo').show();
+	}
+
+	function modifyEmail() {
+		$('#btn_submit').attr('disabled','true');
+		var email = $('#newemail').val();
+                var password = $('#password').val();
+		$.post("{:U('home/Account/modifyEmail')}", {email:email,password:password}, function(res) {
+                    var json =$.parseJSON(res);
+                    if (json.status ==0) {
+                        ui.error(json.info);
+                    }else{
+                        ui.success(json.info);
+                        location.reload();
+                    }
+                    $('#btn_submit').removeAttr('disabled');
+		});
+	}
+
+function getCode() {
+    var pass = $('#orgpass').val();
+    var mobile = $('#mobile').val();
+    if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(mobile))){
+        $('#mobile').focus();
+        ui.error( '输入11位手机号码，注意多余空格' );
+        return false;
+    }
+    if( pass == 0 ) {
+        $('#orgpass').focus();
+        ui.error( '请填写登录密码!' );
+        return false;
+    }
+    $('#btn_getCode').attr('disabled','true');
+    $('#btn_getCode').val('发送中 ...');
+    $.post("{:U('home/Account/mobileCode')}", {pass:pass,mobile:mobile}, function(res) {
+        if (res == '-1') {
+            $('#orgpass').focus();
+            ui.error('登录密码不对');
+        }else if (res == '-2') {
+            $('#mobile').focus();
+            ui.error('输入11位手机号码，注意多余空格');
+        }else if (res == '-3') {
+            ui.error('5分钟内只能发送一次');
+        }else if (res == '-4') {
+            ui.error('1天内最多发送3次');
+        }else if (res == '-5') {
+            ui.error('该手机号码已绑定');
+        }else if (res == '0') {
+            ui.error('发送验证码短信失败，请稍后再试');
+        }else if (res == '1') {
+            restSec = 300;
+            $('#sec').text(restSec);
+            showTime();
+        }
+        $('#btn_getCode').removeAttr('disabled');
+        $('#btn_getCode').val('获取验证码');
+    });
+}
+var restSec = parseInt({$restSec});
+var timeHandel;
+function showTime(){
+    $('#btn_getCode').hide();
+    timeHandel = setInterval(changeTime, 1000);
+    $('#sended').show();
+}
+function changeTime(){
+    restSec--;
+    if(restSec == 0){
+        clearInterval(timeHandel);
+        $('#sended').hide();
+        $('#btn_getCode').show();
+    }
+    $('#sec').text(restSec);
+}
+function bindMobile() {
+    var mobile = $('#mobile').val();
+    if( mobile == 0 ) {
+        $('#mobile').focus();
+        ui.error( '请填写手机号码' );
+        return false;
+    }
+    var password = $('#orgpass').val();
+    $('#btn_bindMobile').attr('disabled','true');
+    $.post("{:U('home/Account/mobileBind')}", {mobile:mobile,password:password}, function(res) {
+        $('#btn_bindMobile').removeAttr('disabled');
+        var json =$.parseJSON(res);
+        if (json.status ==0) {
+            ui.error(json.info);
+        }else{
+            ui.success(json.info);
+            location.reload();
+        }
+    });
+}
+</script>

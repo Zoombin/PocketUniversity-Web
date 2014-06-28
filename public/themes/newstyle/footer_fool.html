@@ -1,0 +1,23 @@
+    </div>
+    <div class="content_fool_2">
+    <div class="pu_f">
+	<div class="pu_f_note">
+       <php>
+        foreach($ts['footer_document'] as $k => $v) {
+            $v['url'] = isset($v['url']) ? $v['url'] : U('home/Public/document',array('id'=>$v['document_id']));
+            $ts['footer_document'][$k] = '<a href="'.$v['url'].'" target="_blank">'.$v['title'].'</a>';
+        }
+        echo implode('&nbsp;&nbsp;|&nbsp;&nbsp', $ts['footer_document']);
+        </php>
+	</div>
+	<div class="footer_note">
+            {:W('FooterIcp')}
+            <a href="{:U('home/Public/toW3g')}">访问W3G版</a>
+                    <a href="{:U('home/Public/toWap')}">访问WAP版</a>
+	</div>
+    </div>
+  </div>
+</div>
+{:Addons::hook('public_footer')}</div>
+</body>
+</html>

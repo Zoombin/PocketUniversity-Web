@@ -1,0 +1,3 @@
+<?php
+//-00000000001a:29:{i:0;s:2:"id";i:1;s:8:"attachId";i:2;s:8:"schoolid";i:3;s:4:"cid0";i:4;s:4:"cid1";i:5;s:6:"userId";i:6;s:6:"status";i:7;s:4:"rate";i:8;s:4:"name";i:9;s:5:"cTime";i:10;s:5:"mTime";i:11;s:5:"rTime";i:12;s:5:"intro";i:13;s:12:"commentCount";i:14;s:9:"readCount";i:15;s:13:"downloadCount";i:16;s:8:"savepath";i:17;s:5:"cover";i:18;s:4:"size";i:19;s:9:"extension";i:20;s:6:"credit";i:21;s:7:"privacy";i:22;s:10:"tranStatus";i:23;s:4:"tags";i:24;s:5:"order";i:25;s:7:"isrecom";i:26;s:5:"isDel";s:8:"_autoinc";b:1;s:3:"_pk";s:2:"id";}
+?>

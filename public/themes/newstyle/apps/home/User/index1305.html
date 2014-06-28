@@ -1,0 +1,154 @@
+<include file="__THEME__/header1" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/weibo1.js?20140317"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/simplefoucs.js"></script>
+<script src="../Public/js/slides.min.jquery.js"></script>
+<style>
+.feed_list .feed_wb {
+    float: right;
+    margin: 7px 0 10px 5px;
+    position: relative;
+    width: 235px;
+}
+.new_position textarea {
+    margin-right: 5px;
+    width: 160px;
+}
+.contentObj{}
+a.username, .username {
+    font-weight: bold;
+}
+</style>
+<div class="content_left">
+    <include file="__THEME__/apps1305" />
+    <neq name="adleft" value=''>
+    <div class="index_ad1">
+        <a href="{$adleft[0]['url']}"  target="_blank" <eq name="adleft[0]['type']" value='1'>onclick="adClick({$adleft[0]['id']})" </eq> >
+            <img src="{$adleft[0]['coverId']|getImgAttachOri}" alt="{$adleft[0]['title']}" />
+        </a>
+    </div>
+    </neq>
+</div>
+<div class="content_middle">
+    <div class="content_m_sub1">
+        <div class="content_m_sub1_menu">校园<span style="color:#666">通知</span></div>
+        <div class="content_m_more"><a href="{:U('announce/Index/', array('school'=>$user['sid']))}">更多 >></a></div>
+        <div class="clear"></div>
+        <div class="content_m_sub1_list">
+            <ul>
+            <volist name="announces" id="vo">
+                <li>
+                    <a href="{:U('announce/Index/details',array('id'=>$vo['id']))}" title="{$vo.title}">{$vo.title}</a>
+                </li>
+            </volist>
+            </ul>
+        </div>
+    </div>
+    <neq name="adhome" value=''>
+    <div class="index_ad2">
+        <div id="focus2">
+            <ul>
+                <volist name="adhome" id="vo">
+                    <li><a href="{$vo['url']}"  target="_blank" <eq name="vo['type']" value='1'>onclick="adClick({$vo['id']})" </eq>>
+                            <img src="{$vo['coverId']|getImgAttachOri}" alt="{$vo.title}" /></a></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    </neq>
+<script type="text/javascript">
+
+    function adClick(adid){
+        $.post("{:U('home/User/adClick')}",{adid:adid});
+    }
+</script>
+
+    {:W('Event',array('mid'=>$mid,'schoolDomain'=>getDomainLink($user['schoolEvent']['domain'])))}
+    <div class="content_m_sub3">
+        {:W('Threeapp')}
+    </div>
+</div>
+<div class="c3" style="*height:994px; overflow:hidden;position:relative;">
+    <div class="code">
+    <div class="code_thumb"><a href="javascript:void(0)" onclick="showBimg('__THEME__/newimages/pu_android2b.png')"><img src="__THEME__/newimages/pu_android2.png" alt="安卓" /></a></div>
+    <div class="code_thumb1"><a href="javascript:void(0)" onclick="showBimg('__THEME__/newimages/pu_ios1b.png')"><img src="__THEME__/newimages/pu_ios1.png" alt="苹果" /></a></div>
+        <div class="code_btn">
+            <ul>
+                <li><a href="{:U('home/Public/android')}"><img style="width:100px;height:30px;" src="__THEME__/newimages/android.gif" alt="" /></a></li>
+                <li><a href="http://itunes.apple.com/cn/app/PocketUni/id685777413?mt=8"><img style="width:100px;height:30px;" src="__THEME__/newimages/iphone.gif" alt="" /></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="c3_pic"><img src="__THEME__/newimages/icon.gif" /></div>
+    <form method="post" action="{:U('weibo/operate/publish')}" id="miniblog_publish" oncomplete="false">
+        <input type="hidden" name="publish_type" value="0">
+        <div class="numObj c3_count"> 还可以输入<span style="font-size:16px; padding:0px 2px;" id="strconunt">{$GLOBALS['ts']['site']['length']}</span>字 </div>
+        <div class="sync">
+            <php>if(Addons::requireHooks("home_index_middle_publish")){</php>
+                <div class="right" style="padding-bottom:5px;_margin-top:-8px; cursor:hand;_padding-top:10px; cursor:pointer"  onclick='weibo.showAndHideMenu("Sync", this, "", "");'>
+                同步<a href="#" class="ico_sync_on"></a>
+            </div>
+            <div id="Sync" style="display:none;position:absolute;left: -50px;top:30px;z-index:9999">
+                <div class="topic_app"></div>
+                <div class="pop_inner">
+                    {:Addons::hook('home_index_middle_publish')}
+                </div>
+            </div>
+            <php>}</php>
+        </div>
+        <div class="c3_btn">
+            <input name="publish" type="button" class="c3_btn_style buttonObj " id="publish_handle" error="发布失败" value="发 布" />
+        </div>
+        <div class="c3_publish">
+            <textarea name="content" id="content_publish" cols="" rows="4" class="contentObj c3_input"></textarea>
+            <div class="txtShadow" style="z-index:-1000"></div>
+        </div>
+        <div class="c3_icon">
+            <div id="publish_type_content_before" class="kind">
+                {:Addons::hook('home_index_middle_publish_type',array('position'=>'index'))}
+            </div>
+        </div>
+        <input type="text" style="display:none" />
+    </form>
+
+    <div class="c3_menu b size">正在发生的</div>
+    <div class="c3_more"><a href="{:U('home/Square/')}">更多>></a></div>
+    <div class="c3_list">
+        {:W('WeiboList1', array('mid'=>$mid, 'list'=>$guanzu['data'], 'insert'=>1))}
+    </div>
+    <div class="c3_menu b size">我关注的</div>
+    <div class="c3_more"><a href="{:U('home/Square/')}">更多>></a></div>
+    <div class="c3_list">
+        {:W('WeiboList1', array('mid'=>$mid, 'list'=>$list['data'], 'insert'=>1))}
+    </div>
+</div>
+<div class="clear"></div>
+
+<include file="__THEME__/footer1" />
+<script>
+var weibo = $.weibo({
+    sinceId: parseInt('{$sinceId}'),
+
+        <php>if(ACTION_NAME=="index"){</php>
+    timeStep : 30000,
+    initForm:true,
+    <php>}</php>
+
+    lastId:parseInt('{$lastId}'),
+    show_feed:parseInt('{$show_feed}'),
+    follow_gid:parseInt('{$follow_gid}'),
+    gid:parseInt('{$gid}'),
+    weiboType:'{$type}',
+    type:parseInt('{$indexType}'),
+    typeList:{
+        WEIBO:parseInt(<php>echo UserAction::INDEX_TYPE_WEIBO;</php>),
+        GROUP:parseInt(<php>echo UserAction::INDEX_TYPE_GROUP;</php>),
+        ALL:parseInt(<php>echo UserAction::INDEX_TYPE_ALL;</php>)
+    }
+});
+function showBimg(path){
+      ui.box.show('<div style="width:300px;height:300px;"><img src="'+path+'" /></div>',{title:'二维码'});
+  }
+</script>
+{:Addons::hook('weibo_js_plugin')}

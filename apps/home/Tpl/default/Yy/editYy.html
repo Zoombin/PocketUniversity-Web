@@ -1,0 +1,130 @@
+<include file="_header" />
+<!-- 编辑器样式文件 -->
+<link href="__PUBLIC__/js/editor/editor/theme/base-min.css" rel="stylesheet"/>
+<!--[if lt IE 8]>
+<link href="__PUBLIC__/js/editor/editor/theme/cool/editor-pkg-sprite-min.css" rel="stylesheet"/>
+<![endif]-->
+<!--[if gte IE 8]><!-->
+<link href="__PUBLIC__/js/editor/editor/theme/cool/editor-pkg-min-datauri.css" rel="stylesheet"/>
+<!--<![endif]-->
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<include file="__THEME__/editor" />
+<div class="so_main">
+  <div id="editTpl_div">
+  	<div class="page_tit"><eq name="type" value="edit">编辑<else/>添加</eq>产品</div>
+
+	<div class="form2">
+	<form method="post" action="{:U('/Yy/doEditYy')}" enctype="multipart/form-data" onsubmit="return check();">
+	<input type="hidden" name="id" value="{$id}">
+    <dl class="lineD">
+        <dt>类型：<span class="red">*</span></dt>
+        <dd>
+            <select name="type"  onChange="adType(this)">
+                <option value="1" >实物</option>
+                <option value="2" >外部商家优惠劵</option>
+                <option value="3" >内部代金劵</option>
+            </select>
+        </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>标题：<span class="red">*</span></dt>
+      <dd>
+        <input name="title" type="text" value="{$title}" size="40" maxlength="20" />
+        </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>描述：</dt>
+      <dd>
+        <textarea id='textarea' name="desc" style="width:300px;height:100px;border:1px solid #ccc;" >{$desc}</textarea>
+        <br/>摇中奖品时显示于客户端 尽量简短
+        </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>数量：<span class="red">*</span></dt>
+      <dd>
+        <input name="num" type="text" value="{$num}" />
+	  </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>中奖率：<span class="red">*</span></dt>
+      <dd>
+        <input name="procent" type="text" value="{$procent}" /> 填入整数(如千分之一填1000)
+	  </dd>
+    </dl>
+    <dl class="lineD type lu1 lu2">
+        <dt>上传图片：</dt>
+        <dd>
+            <input name="cover" type="file" /><span class="cGray2"></span>
+        </dd>
+    </dl>
+    <dl class="lineD type lu3">
+      <dt>产品链接：<span class="red">*</span></dt>
+      <dd>
+        <input name="link" type="text" value="{$link}"  size="80"/> <br/>例如众志成城 http://pocketuni.net/index.php?app=shop&mod=Tg&act=detail&id=766
+	  </dd>
+    </dl>
+    <dl class="lineD type lu3">
+      <dt>代金金额：<span class="red">*</span></dt>
+      <dd>
+        <input name="money" type="text" value="{$money}" />
+	  </dd>
+    </dl>
+    <dl class="lineD type lu1 lu2">
+      <dt>产品详细页：<span class="red">*</span></dt>
+      <dd>
+        <textarea name="content" id="content" style="width:850px;height:300px">{$content}</textarea>
+	  </dd>
+    </dl>
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+	</form>
+  </div>
+  </div>
+</div>
+<script>
+    $(function(){
+        loadEditor("content");
+        showType($("select[name='type']").val());
+    });
+    function adType(obj){
+        showType(obj.value);
+    }
+    function showType(type){
+        $('.type').hide();
+        if(type==1){
+            $('.lu1').show();
+        }else if(type==2){
+            $('.lu2').show();
+        }else if(type==3){
+            $('.lu3').show();
+        }
+    }
+    function check(){
+    if(!$( 'input[name="title"]' ).val()){
+        ui.error("标题不能为空");
+        return false;
+    }
+    if(!$( 'input[name="num"]' ).val()){
+        ui.error("数量不能为空");
+        return false;
+    }
+    if(!$( 'input[name="procent"]' ).val()){
+        ui.error("中奖率不能为空");
+        return false;
+    }
+    var type = $( 'select[name="type"]' ).val();
+    if(type==3){
+        if(!$( 'input[name="link"]' ).val()){
+            ui.error("产品链接不能为空");
+            return false;
+        }
+        if(!$( 'input[name="money"]' ).val()){
+            ui.error("代金金额不能为空");
+            return false;
+        }
+    }
+    return true;
+}
+</script>
+<include file="_footer" />

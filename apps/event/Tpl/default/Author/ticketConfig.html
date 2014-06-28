@@ -1,0 +1,51 @@
+        <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td align="right">打开投票：</td>
+                <td>
+                    <input type="radio" value="1" name="isTicket" <eq name="isTicket" value="1">checked</eq> /> 打开
+                    <input type="radio" value="0" name="isTicket" <eq name="isTicket" value="0">checked</eq> /> 关闭
+                </td>
+            </tr>
+            <tr><td height="8" colspan="20"></td></tr>
+            <tr>
+                <td align="right">每人最多可投(1-100)：</td>
+                <td><input type="text" name="maxVote"  value="{$maxVote}" size="5" /> 票</td>
+            </tr>
+            <tr><td height="8" colspan="20"></td></tr>
+            <tr>
+                <td align="right">可否重复投票 ：</td>
+                <td>
+                    <input type="radio" value="1" name="repeated_vote" <eq name="repeated_vote" value="1">checked</eq> /> 可重复
+                    <input type="radio" value="0" name="repeated_vote" <eq name="repeated_vote" value="0">checked</eq> /> 不可重复
+                </td>
+            </tr>
+            <tr><td height="8" colspan="20"></td></tr>
+            <tr>
+                <td align="right">票必须全部投完 ：</td>
+                <td>
+                    <input type="radio" value="1" name="allTicket" <eq name="allTicket" value="1">checked</eq> /> 是
+                    <input type="radio" value="0" name="allTicket" <eq name="allTicket" value="0">checked</eq> /> 否
+                </td>
+            </tr>
+        </table>
+        <div class="button_div">
+            <input type="button" onclick="submit({$eventId})" class="btn_b" value="确定" />
+        </div>
+<script>
+    function submit(id){
+        isTicket = $( 'input[name="isTicket"]:checked' ).val();
+        repeated_vote = $( 'input[name="repeated_vote"]:checked' ).val();
+        allTicket = $( 'input[name="allTicket"]:checked' ).val();
+        maxVote = $( 'input[name="maxVote"]' ).val();
+        $.post(U('event/Author/doTicketConfig'),{id:id,isTicket:isTicket,repeated_vote:repeated_vote,maxVote:maxVote,allTicket:allTicket},function( text ){
+            var json =$.parseJSON(text);
+            if( json.status == 1 ){
+                ui.success( json.info );
+                setTimeout(function(){ui.box.close();},1500);
+            }else{
+                ui.error( json.info );
+            }
+        });
+    }
+</script>
+

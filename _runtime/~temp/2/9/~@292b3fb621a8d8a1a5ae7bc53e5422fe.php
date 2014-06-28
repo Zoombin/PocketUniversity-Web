@@ -1,0 +1,3 @@
+<?php
+//-00000000001a:13:{s:8:"weibo_id";s:4:"1469";s:3:"uid";s:5:"29070";s:7:"content";s:175:"分享@苏大科协 的活动:【苏州大学学生科技协会第五届智慧之星】 http://xyhui.com/index.php?app=home&amp;mod=Front&amp;act=index&amp;id=8&amp;uid=38838 ";s:5:"ctime";s:10:"1363745432";s:4:"from";s:1:"0";s:7:"comment";s:1:"0";s:12:"transpond_id";s:1:"0";s:9:"transpond";s:1:"0";s:4:"type";s:1:"0";s:9:"type_data";N;s:9:"from_data";N;s:5:"isdel";s:1:"0";s:5:"heart";s:1:"0";}
+?>

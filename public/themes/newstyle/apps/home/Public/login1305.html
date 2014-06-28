@@ -1,0 +1,109 @@
+<include file="__THEME__/header1" />
+<script type="text/javascript" src="__PUBLIC__/js/simplefoucs.js"></script>
+<div class="content_left_login">
+    <div class="content_l_login">
+        <div class="content_l_login_menu">立刻<span style="color:#9bcc38">登录</span></div>
+        <div class="c1_login">
+        <div class="clear"></div>
+        <div id="ppcontid" class="logform">
+            <form action="{:U('home/Public/doLogin')}" method="post">
+                <div class="frm" style="height:29px;*height:auto; position:relative">
+                    <label id="_login_school_label" class="form_label" style="display:block;" onclick="$(this).hide();selectSchool()">选择学校</label>
+                    <input type="text" id="selectarea" class="text" value="" readonly="true" OnFocus="$('#_login_school_label').hide();selectSchool()" />
+                    <input type="hidden" id="current" name="sid" />
+                </div>
+                <div class="frm" style="height:29px;*height:auto; position:relative">
+                    <label id="_login_email_label" class="form_label" style="display:block;" onclick="$(this).hide();$('#number').focus();">请输入学号</label>
+                    <input type="text" id="number" name="number" class="text" title="学号" autocomplete="off" value="" onblur="if($(this).val()=='') $('#_login_email_label').show();" onfocus="$('#_login_email_label').hide();" />
+                </div>
+                <div class="frm" style="height:29px;*height:auto; position:relative">
+                    <label id="_login_password_label" class="form_label" style="display:block;" onclick="$(this).hide();$('#password').focus();" >请输入密码，初始密码为6个1</label>
+                    <input type="password" title="密码" value="" id="password" name="password" class="text" style="display: inline;" onblur="if($(this).val()=='') $('#_login_password_label').show();" onfocus="$('#_login_password_label').hide();" />
+                </div>
+                <div class="frm" style="margin-top:8px; float:left;">
+                    <label>
+                        <input name="remember" type="checkbox" value="1" />
+                        记住登录状态</label>
+                    <a class="fuc0" href="{:U('home/Public/sendPassword')}">忘记密码？</a>
+                </div>
+                <div class="frm" style="margin:5px auto 25px auto; padding:0px; width:85px"><input type="submit" value="登 录" class="logbtn" /> </div>
+            </form>
+        </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+                if($('#selectarea').val()!='') $('#_login_school_label').hide();
+                setInterval(function(){
+                    if('' != $('#number').val())$('#_login_email_label').hide();
+                    if('' != $('#password').val())$('#_login_password_label').hide();
+                }, 100);
+            });
+            function selectSchool(){
+                ui.box.load(U('home/Public/citys'),{title:'选择学校',noCheck:'yes'});
+            }
+        </script>
+    </div>
+
+    <div class="content_l_ph">
+        <div class="content_l_login_menu">公告<span style="color:#9bcc38">活动</span></div>
+        <div class="c_update">
+         <ul>
+            <volist name='noticeList' id="vo">
+              <li>
+                  <a href="{:U('announce/Index/noticeDetail', array('id'=>$vo['id']))}"><span class="cRed">[ {$vo.front} ]</span> {$vo.title|getShort=###,14}</a>
+              </li>
+            </volist>
+         </ul>
+         <div class="c_update_more"><a href="{:U('announce/Index/notice')}">更多>></a></div>
+        </div>
+
+
+
+    </div>
+  <neq name="adleft" value=''>
+    <div class="login_ad1">
+        <a href="{$adleft[0]['url']}"  target="_blank"  >
+            <img src="{$adleft[0]['coverId']|getImgAttachOri}" alt="{$adleft[0]['title']}" />
+        </a>
+    </div>
+    </neq>
+</div>
+<div class="content_middle">
+    <neq name="adhome" value=''>
+    <div class="login_ad2">
+        <div id="focus">
+            <ul>
+                <volist name="adhome" id="vo">
+                    <li><a href="{$vo['url']}"  target="_blank" >
+                            <img src="{$vo['coverId']|getImgAttachOri}" alt="{$vo.title}" /></a></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    </neq>
+    {:W('Event',array('mid'=>$mid,'limit'=>3))}
+</div>
+<div class="c3 i_login">
+    <div class="content_r_login">
+        <div class="code">
+    <div class="code_thumb"><a href="javascript:void(0)" onclick="showBimg('__THEME__/newimages/pu_android2b.png')"><img src="__THEME__/newimages/pu_android2.png" alt="安卓" /></a></div>
+    <div class="code_thumb1"><a href="javascript:void(0)" onclick="showBimg('__THEME__/newimages/pu_ios1b.png')"><img src="__THEME__/newimages/pu_ios1.png" alt="苹果" /></a></div>
+            <div class="code_btn">
+                <ul>
+                    <li><a href="{:U('home/Public/android')}"><img style="width:100px;height:30px;" src="__THEME__/newimages/android.gif" alt="" /></a></li>
+                    <li><a href="http://itunes.apple.com/cn/app/PocketUni/id685777413?mt=8"><img style="width:100px;height:30px;" src="__THEME__/newimages/iphone.gif" alt="" /></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="c3_menu i_login1 b">正在<span style="color:#14a0cd">发生的</span></div>
+        <div class="c3_list">
+            {:W('WeiboList1', array('mid'=>$mid, 'list'=>$lastest_weibo, 'insert'=>0, 'num'=>10))}
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+  function showBimg(path){
+      ui.box.show('<div style="width:300px;height:300px;"><img src="'+path+'" /></div>',{title:'二维码'});
+  }
+</script>
+<include file="__THEME__/footer1" />

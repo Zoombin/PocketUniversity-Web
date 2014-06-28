@@ -1,0 +1,48 @@
+<include file="../Public/_header" />
+<div class="so_main">
+    <div class="page_tit">摇一摇日统计</div>
+    <div class="Toolbar_inbox">
+        <span>共{$totalRows}条记录</span>
+        <div class="page right">{$html}</div>
+    </div>
+    <div class="list">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th class="line_l">日期</th>
+                <th class="line_l">总次数/盈余</th>
+                <th class="line_l">总进账</th>
+                <th class="line_l">总支出</th>
+                <th class="line_l">免费次数/盈余</th>
+                <th class="line_l">免费支出</th>
+                <th class="line_l">一元次数/盈余</th>
+                <th class="line_l">一元支出</th>
+                <th class="line_l">两元次数/盈余</th>
+                <th class="line_l">两元支出</th>
+                <th class="line_l">五元次数/盈余</th>
+                <th class="line_l">五元支出</th>
+            </tr>
+            <volist id="vo" name="data">
+                <tr overstyle='on'>
+                    <td>{$vo.day}</td>
+                    <td>{$vo.times} / (<?php echo money2xs($vo['moneyIn']-$vo['moneyOut']); ?>)</td>
+                    <td>{$vo.moneyIn|money2xs}</td>
+                    <td>{$vo.moneyOut|money2xs}</td>
+                    <td>{$vo.free_times} / (<?php echo money2xs(0-$vo['free_moneyOut']); ?>)</td>
+                    <td>{$vo.free_moneyOut|money2xs}</td>
+                    <td>{$vo.one_times} / (<?php echo money2xs(100*$vo['one_times']-$vo['one_moneyOut']); ?>)</td>
+                    <td>{$vo.one_moneyOut|money2xs}</td>
+                    <td>{$vo.two_times} / (<?php echo money2xs(200*$vo['two_times']-$vo['two_moneyOut']); ?>)</td>
+                    <td>{$vo.two_moneyOut|money2xs}</td>
+                    <td>{$vo.five_times} / (<?php echo money2xs(500*$vo['five_times']-$vo['five_moneyOut']); ?>)</td>
+                    <td>{$vo.five_moneyOut|money2xs}</td>
+                </tr>
+            </volist>
+        </table>
+    </div>
+
+    <div class="Toolbar_inbox">
+        <span>共{$totalRows}条记录 </span>
+        <div class="page right">{$html}</div>
+    </div>
+</div>
+<include file="../Public/_footer" />

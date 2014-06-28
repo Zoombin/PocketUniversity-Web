@@ -1,0 +1,12 @@
+<?php if (!defined('THINK_PATH')) exit();?><?php echo ($ts['site']['site_icp']); ?> 经营性ICP： <a href="__THEME__/newimages/pic_icp.jpg" target="_blank">苏 B2-20130213</a>  <!--<span style="padding-left:20px;">客服电话：0512-69330056 | QQ群 <a href="http://pocketuni.net/index.php?app=home&mod=Public&act=document&id=3">点击查看</a></span> -->
+<?php echo '<?'; ?>
+ php @mysql_close();?>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?dd3ea352543392a029ccf9da1be54a50";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>

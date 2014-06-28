@@ -1,0 +1,19 @@
+<?php if($type==1):?>
+<input type="text" name="para{$id}" value="{$paraValue}" size="40"/>
+<?php elseif($type==2):?>
+<textarea name="para{$id}" rows="5" cols="60">{$paraValue}</textarea>
+<?php elseif($type==3):?>
+    <?php if(!$attach):?>
+        <input id="file{$id}" name="para{$id}" type="hidden" value="" />
+        <input type="button" onclick="openUploadFile({$id});" value="上传文件"/>
+        <span id="para{$id}" style="border:1px solid #00ff00;margin-left:10px;padding:0 5px;"></span>
+        <span id="del{$id}"></span>
+        <br /><span class="cGray2">（不大于2MB,支持格式jpg,gif,png,jpeg,bmp,zip,rar,doc,xls,ppt,docx,xlsx,pptx,pdf）</span>
+    <?php else:?>
+        <input id="file{$id}" name="para{$id}" type="hidden" value="{$paraValue}" />
+        <input type="button" onclick="openUploadFile({$id});" value="上传文件"/>
+        <span id="para{$id}" style="border:1px solid #00ff00;margin-left:10px;padding:0 5px;">{$attach.name}</span>
+        <span id="del{$id}"><a onclick="delFile({$id})" href="javascript:void(0)">删除</a></span>
+        <br /><span class="cGray2">（不大于2MB,支持格式jpg,gif,png,jpeg,bmp,zip,rar,doc,xls,ppt,docx,xlsx,pptx,pdf）</span>
+    <?php endif; ?>
+<?php endif; ?>

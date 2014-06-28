@@ -1,0 +1,8 @@
+<h2><a class="right" style="font-weight:400;font-size:12px"  href="{:U('announce/Index/')}">更多</a>{$title}</h2>
+<ul class="topic_list lineS_btm">
+    <volist id="vo" name="list">
+        <li>
+            <a href="{:U('announce/Index/details',array('id'=>$vo['id']))}" title="{$vo.title}">{$vo.title|getShort=###,13,'…'}</a><br />
+        </li>
+    </volist>
+</ul>

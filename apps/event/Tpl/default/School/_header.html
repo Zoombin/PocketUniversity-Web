@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+<neq name="ts['site']['page_title']" value="">
+    {$ts['site']['page_title']} -
+</neq>
+    {$webconfig.title}
+</title>
+<include file="__THEME__/comm/_main" />
+<link rel="shortcut icon" href="__THEME__/favicon.ico" />
+<link href="../Public/css/x_hd1.css?140523" type="text/css" rel="stylesheet" />
+<link href="../Public/event.css?20131126" rel="stylesheet" type="text/css" />
+<!-- 编辑器样式文件 -->
+<link href="__PUBLIC__/js/editor/editor/theme/base-min.css" rel="stylesheet"/>
+<!--[if lt IE 8]>
+<link href="__PUBLIC__/js/editor/editor/theme/cool/editor-pkg-sprite-min.css" rel="stylesheet"/>
+<![endif]-->
+<!--[if gte IE 8]><!-->
+<link href="__PUBLIC__/js/editor/editor/theme/cool/editor-pkg-min-datauri.css" rel="stylesheet"/>
+<!--<![endif]-->
+<include file="__THEME__/comm/_app" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery.nav.js?130703"></script>
+<script>
+	var _UID_   = '{$uid}';
+	var _MID_   = '{$mid}';
+	var _ROOT_  = '__ROOT__';
+	var _THEME_ = '__THEME__';
+	var _PUBLIC_ = '__PUBLIC__';
+	var _LENGTH_ = {$GLOBALS['ts']['site']['length']};
+    var _LANG_SET_ = '{:LANG_SET}';
+	var $CONFIG = {};
+	$CONFIG['uid'] = '{$uid}';
+	$CONFIG['mid'] = '{$mid}';
+	$CONFIG['root_path'] = '__ROOT__';
+	$CONFIG['theme_path'] = '__THEME__';
+	$CONFIG['public_path'] = '__PUBLIC__';
+    $CONFIG['weibo_length'] = {$GLOBALS['ts']['site']['length']};
+    $CONFIG['lang'] = '{:LANG_SET}';
+	document.execCommand("BackgroundImageCache", false, true);
+</script>
+<style type="text/css">
+.school{ font-size:14px; color:#FFF; float:left; height:40px; line-height:40px; padding-left:20px;}
+</style>
+</head>
+<body>
+<include file="__THEME__/_holder_school" />
+<?php if($school['id'] == 505):?>
+<div style="position:absolute;top:50px;left:50px"><a href="{:U('event/School/surveyList/')}"><img src="../Public/images/ad_dc.jpg" width="100" height="180" border="0" /></a></div >
+<?php endif;?>
+    <div class="bg">
+        <div class="main">
+            <div class="hd_header">
+                <div class="hd_title1"><img height="80px;" src="{$webconfig.path}" alt="" /></div>
+                    <?php if($slide):?>
+                <div class="hd_ppt">
+                    <!-- 幻灯代码 开始 -->
+                    <div id="inner">
+                        <div class="hot-event">
+                            <volist name="slide" id="vo">
+                            <div class="event-item" <?php if($i==1):?>style="display: block;"<?php else:?>style="display: none;"<?php endif;?>>
+                                <a target="_blank" href="{:U('/Front/index', array('id'=>$vo['id']))}" class="banner">
+                                    <img src="{$vo.logoId|tsGetLogo=###,$vo['typeId'],$vo['default_banner']}" class="photo" style="width: 980px; height: 218px;" alt="{$vo.title}" />
+                                </a>
+                            </div>
+                            </volist>
+                            <div class="switch-tab">
+                                <volist name="slide" id="vo">
+                                    <a href="#" onclick="return false;" <?php if($i==1):?> class="current"<?php endif;?>>{$i}</a>
+                                </volist>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $('#inner').nav({ t: 2000, a: 1000 });
+                    </script>
+                    <!-- 代码 结束 -->
+                </div>
+                    <?php endif;?>
+            </div>
+
+            <div class="clear"></div>
+            <div class="hd_content">
+                <div class="hd_c_top">
+                    <div class="menu f14 fw">
+                        <ul class="first-menu" id="menu">
+                            <li class="first-menu-li <?php if(MODULE_NAME=='School'||
+                                (MODULE_NAME=='Author'&&ACTION_NAME=='index'||ACTION_NAME=='board'))echo' i8';?>"><a href="{:U('/School/index')}">活动首页</a>
+                            </li>
+                            <li class="first-menu-li <?php if($groupPage=='group')echo' i8';?>" ><a href="{:U('/GroupIndex/index')}">校园部落</a></li>
+                            <?php if($school['id'] == 473):?>
+                            <li class="first-menu-li"><a href="javascript:void(0)" target="_blank">职业规划</a></li>
+                            <li class="first-menu-li"><a href="javascript:void(0)">校园服务</a>
+                                <ul class="second-menu">
+                                    <li class="second-menu-li i9"><a href="javascript:void(0)">学习类</a></li>
+                                    <li class="second-menu-li i9"><a href="javascript:void(0)">工作类</a></li>
+                                    <li class="second-menu-li i9"><a href="javascript:void(0)">生活类</a></li>
+                                    <li class="second-menu-li i9"><a href="javascript:void(0)">求助咨询类</a></li>
+                                    <li class="second-menu-li i9"><a href="javascript:void(0)">其他类别</a></li>
+                                </ul>
+                            </li>
+                            <?php endif;?>
+                            <li class="first-menu-li<?php if(ACTION_NAME=='jf'||ACTION_NAME=='gift'||ACTION_NAME=='myjf')echo' i8';?>"><a href="{:U('/School/jf')}">积分商城</a>
+                                <ul class="second-menu">
+                                    <li class="second-menu-li i9"><a href="{:U('/School/myjf')}">我兑换的礼品</a></li>
+                                </ul>
+                            </li>
+                            <?php if($school['id'] == 1):?>
+                            <li class="first-menu-li"><a href="{:U('/Lesson/board')}">课程</a></li>
+                            <?php endif;?>
+                                <li class="first-menu-li <?php if($eventPage=='announce')echo' i8';?>" ><a href="{:U('/Announce/index')}">校内通知</a></li>
+                            <li class="first-menu-li<?php if(ACTION_NAME=='survey'|| ACTION_NAME=='surveyList')echo' i8';?>"><a href="{:U('event/School/surveyList')}">问卷</a></li>
+                            <?php if(isDonateSchool($school['id'])):?>
+                            <li class="first-menu-li"><a href="{:U('shop/Donate/index')}">爱心校园<span class="icon_newR"></span></a></li>
+                            <?php endif;?>
+                        </ul>
+                    </div>
+                    <?php if($smid && $user['can_add_event'] && $user['can_prov_event']):?>
+                        <div class="hd_c_publish f14 fw"><a href="{:U('/School/addEventSelect')}">发起活动</a></div>
+                    <?php elseif($smid && $user['can_add_event'] && !$user['can_prov_event']):?>
+                        <div class="hd_c_publish f14 fw"><a href="{:U('/School/addEvent')}">发起活动</a></div>
+                    <?php elseif($smid && !$user['can_add_event'] && $user['can_prov_event']):?>
+                        <div class="hd_c_publish f14 fw"><a href="{:U('/School/addProv')}">发起活动</a></div>
+                    <?php endif;?>
+                </div>

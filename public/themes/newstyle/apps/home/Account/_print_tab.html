@@ -1,0 +1,5 @@
+<div class="MenuSub">
+<a <?php if($action=='list')echo' class="on"';?> href="{:U('home/Account/myprint')}">我打印的列表</a>|
+<a <?php if($action=='addPrint1')echo' class="on"';?> href="{:U('home/Account/myprint',array('action'=>'addPrint1'))}">申请证书</a>|
+<a <?php if($action=='addPrint2')echo' class="on"';?> href="{:U('home/Account/myprint',array('action'=>'addPrint2'))}">生成纪念册</a>
+</div>

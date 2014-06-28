@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- QQ登录 -->
+<meta property="qc:admins" content="61701556566401633636375" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+<neq name="ts['site']['page_title']" value="">
+    {$ts['site']['page_title']} <neq name="ts['app']['app_alias']" value="">- {$ts['app']['app_alias']} </neq>- {$ts['site']['site_name']}
+<else/>
+    {$ts['site']['site_name']} <neq name="ts['site']['site_slogan']" value=""> - {$ts['site']['site_slogan']}</neq>
+</neq>
+</title>
+<link rel="shortcut icon" href="__THEME__/favicon.ico" />
+<meta name="keywords" content="{$ts['site']['site_header_keywords']}" />
+<meta name="description" content="{$ts['site']['site_header_description']}" />
+<script>
+	var _UID_   = '{$uid}';
+	var _MID_   = '{$mid}';
+	var _ROOT_  = '__ROOT__';
+	var _THEME_ = '__THEME__';
+	var _PUBLIC_ = '__PUBLIC__';
+	var _LENGTH_ = {$GLOBALS['ts']['site']['length']};
+</script>
+<include file="__THEME__/comm/_header" />
+{:Addons::hook('public_head')}
+</head>

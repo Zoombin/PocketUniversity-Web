@@ -1,0 +1,10 @@
+    <div class="tab-menu"><!-- 切换标签 begin  -->
+      <ul>
+        <volist id="vo" name="accountmenu">
+      		<li><a href="{:U('home/Account/'.$vo['act'], $vo['param'])}"
+                       <?php if(ACTION_NAME==$vo['act']||
+                       (ACTION_NAME=='rechargeList' && $vo['act']=='recharge')||
+                       (ACTION_NAME=='consumeList' && $vo['act']=='recharge'))echo'class="on"';?> ><span>{$vo.name}</span></a></li>
+      	</volist>
+      </ul>
+    </div>

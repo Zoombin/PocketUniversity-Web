@@ -1,0 +1,68 @@
+<div class="content_left_user">
+    <div class="content_l_sub1">
+        <div class="content_l_sub1_photo"><space uid="mid" class="nocard">{uavatar}</space></div>
+        <div class="c1_infor">
+            <div class="c1_name"><space uid="mid">{uname}</space></div>
+            <div class="c1_jf">PU币：<span class="red"><?php echo($user['money']/100);?></span></div>
+            <div class="c1_jf">
+                <php>
+                    $user_credit = $userInfoCache['credit'];
+                    foreach($user_credit as $k => $v) {
+                </php>
+                <p>{$v['alias']}：<a href="{:U('home/Account/credit')}"><span class="cRed">{$v['credit']}</span></a></p>
+                <php>
+                    }
+                    unset($user_credit);
+                </php>
+            </div>
+            <div class="c1_jf">{$user.sid|tsGetSchoolName}</div>
+        </div>
+        <div class="clear"></div>
+        <php>if ($announcement['is_open'] && !empty($announcement['content'])) {</php>
+        <div id="announcement">
+            <div class="c1_come"><a href="javascript:void(0)">{$announcement['content']}</a></div>
+            <div class="c1_close"><img src="__THEME__/images1305/icon_close.gif" alt="关闭" onclick="$('#announcement').hide('slow');" /></div>
+        </div>
+        <php>}</php>
+        <div class="clear"></div>
+        <div class="c1_note">
+            <table width="230" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td><a href="{:U('home/space/follow',array('type'=>'following', 'uid'=>$mid))}">关注<br/>{$userInfoCache['following']}</a></td>
+                    <td><a href="{:U('home/space/follow',array('type'=>'follower', 'uid'=>$mid))}">粉丝<br/>{$userInfoCache['follower']}</a></td>
+                    <td><a href="{:U('home/space/index',array('uid'=>$uid))}">微博<br/>{$userInfoCache['miniNum']}</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="c1_list1">
+    <ul>
+        <li><a href="{:U('home/Space/index')}">我的首页</a></li>
+        <li><a href="{:U('home/user/atme')}" {:getMenuState('user/atme')}>查看@我</a></li>
+        <li><a href="{:U('home/user/collection')}" {:getMenuState('user/collection')}>我赞过的</a></li>
+        <li><a href="{:U('home/user/comments')}" {:getMenuState('user/comments')}>我的评论</a></li>
+    </ul>
+</div>
+<div class="c1_title b">我的应用</div>
+<div class="c1_list2_action"><a href="{:U('home/Index/addapp')}">添加</a> &nbsp; <a href="{:U('home/Index/editapp')}">管理</a></div>
+<div class="c1_list2">
+    <ul>
+        <li>
+            <div class="c1_list2_title b">个人类</div>
+            <div class="c1_list2_sublist">{:W('Applist',array('install_app'=>$install_app,'category'=>'个人类'))}</div>
+        </li>
+        <li>
+            <div class="c1_list2_title b">校方类</div>
+            <div class="c1_list2_sublist">{:W('Applist',array('install_app'=>$install_app,'category'=>'校方类'))}</div>
+        </li>
+    </ul>
+</div>
+<php>
+function getMenuState($type){
+	$type = split('/',$type);
+	if( strtolower(MODULE_NAME)==strtolower($type[0]) && ( strtolower(ACTION_NAME)==strtolower($type[1]) || $type[1]=='*') ){
+		return 'class="on"';
+	}
+}
+</php>

@@ -1,0 +1,52 @@
+<div class="c2_title1 b size">{$title}
+    <?php if(isset($schoolEvent)):?>
+        <!--<span style="padding-left: 80px;"><a href="{$schoolEvent['domain']}" target="_blank">您的学校开通了官方活动=>由此进入</a></span>!-->
+    <?php endif; ?>
+</div>
+<div class="c2_more"><a href="{:U('event/Index/')}">更多>></a></div>
+<div class="c2_list2">
+    {:W('Weibo',array('tpl_name'=>'event_share_weibo','button_title'=>'分享'))}
+    <ul>
+        <volist id="vo" name="list">
+        <li <php>if($i==count($list)){</php> class="i7"<php>}</php>>
+            <div class="c2_list2_thumb"><img src="{$vo['cover']}" alt="" /></div>
+            <div class="c2_list2_infor">
+                <div class="c2_list2_title b size">
+                    <a href="{:U('event/Front/index', array('id'=>$vo['id']))}" target="_blank">{$vo['title']}</a>
+                </div>
+                <div class="c2_list2_desc"> 活动时间：<?php echo date('Y年m月d日 H:i', $vo['sTime'])?> <br />
+                    发起人：<space uid="vo.uid" >{uname}</space><br />
+                    参加人数（<span class="bule">{$vo['joinCount']}</span>） </div>
+            </div>
+            <?php if($mid):?>
+            <div class="c2_list2_btn">
+                <ul>
+                    <li class="i6">
+                        <?php
+                            $tpl_data = urlencode(serialize(array(
+                            'author'=>getUserName($vo['uid']),
+                            'title'=>$vo['title'],
+                            'url'=>U('/Front/index',array('id'=>$vo['id'],'uid'=>$vo['uid'])),
+                            )));
+                        ?>
+                        <a href="#" onclick="_widget_weibo_start('', '{$tpl_data}');" >我要分享</a>
+                    </li>
+
+                    <?php if( $vo['deadline']>time()): ?>
+                        <span class="list_joinIn_{$vo['id']}">
+                            <?php if( $vo['limitCount'] >0 ): ?>
+                                <li><a href="{:U('event/Front/join',array('id'=>$vo['id']))}" target="_blank">我要参加</a></li>
+                            <?php else: ?>
+                                <li class="i3">名额已满</li>
+                            <?php endif; ?>
+                        </span>
+                    <?php else: ?>
+                        <li class="i4">报名已结束</li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+             <?php endif; ?>
+        </li>
+        </volist>
+    </ul>
+</div>

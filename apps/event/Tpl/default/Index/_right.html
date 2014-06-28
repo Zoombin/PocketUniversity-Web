@@ -1,0 +1,35 @@
+
+<div class="hd_c_right_menu">最新活动新闻</div>
+<div class="hd_c_right_list">
+    <ul>
+        <volist name="rightNews" id="vo">
+            <li>
+                <a href="{:U('/Front/newsDetails',array('id'=>$vo['eventId'],'nid'=>$vo['id']))}" target="_blank"
+                   title="{$vo.title}">{$vo.title|getShort=###,20,'…'}</a>
+            </li>
+        </volist>
+    </ul>
+</div>
+<div class="hd_c_right_menu i2">推荐活动</div>
+<div class="hd_c_right_list1">
+    <ul>
+        <?php $cnt=count($hotList);?>
+        <volist name="hotList" id="vo">
+            <li<?php if($i-1==$cnt)echo'  class="i7"'?>>
+                <div class="hd_c_right_list1_thumb">
+                    <a href="{:U('/Front/index', array('id'=>$vo['id'], 'uid'=>$vo['uid']))}" target="_blank"><img src="{$vo.coverId|getCover}" /></a>
+                </div>
+                <div class="hd_c_right_list1_infor">
+                    <div class="hd_c_right_list1_title b">
+                        <a href="{:U('/Front/index', array('id'=>$vo['id'], 'uid'=>$vo['uid']))}" target="_blank">{$vo['title']}</a>
+                    </div>
+                    <div class="hd_c_right_list1_class">类别：
+                        <a href="{:U('/Index/index', array('cid'=>$vo['typeId']) )}">[{$category[$vo['typeId']]}]</a></div>
+                    <div class="hd_c_right_list1_school">学校：{$vo['sid']|tsGetSchoolTitle=###,$schools}</div>
+                    <div class="hd_c_right_list1_add">地址：{$vo.address}</div>
+                    <div class="hd_c_right_list1_author">发起人：<space uid="vo.uid" >{uname}</space></div>
+                </div>
+            </li>
+        </volist>
+    </ul>
+</div>

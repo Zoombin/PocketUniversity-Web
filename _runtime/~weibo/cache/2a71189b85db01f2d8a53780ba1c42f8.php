@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><TSAJAX><?php if($limit){ ?><HASNEW><a href="javascript:void(0)" limit="<?php echo ($limit); ?>" class="feed_msg_new iine_warning">有<strong><?php echo ($limit); ?></strong>条新微博，点击更新</a><?php } ?>

@@ -1,0 +1,25 @@
+<ul>
+    <volist id="vo" name="list" key="i">
+    <li>
+        <div class="content_m_sub3_menu <?php if($i==2){echo'color1';}if($i==3){echo'color2';}?> b"><a href="{$vo.more}">{$vo.title} >></a></div>
+        <div class="content_m_sub3_sublist <?php if($i==2){echo'color3';}if($i==3){echo'color4';}?>">
+            <ul>
+                <volist id="vo2" name="vo['list']" key="j">
+                    <li>
+        <?php if($vo['title'] == '课件'):?>
+                <a href="{$vo2['url']}" title="{$vo2['title']}">{$vo2['title']}</a>
+        <?php else:?>
+                <div class="content_m_sub3_sublist_icon">
+                    <?php if($vo2['path'] != ''):?>
+                    <img width="16px;" height="16px;" src="{$vo2['path']}"  />
+                    <?php endif;?>
+                </div>
+               <div class="content_m_sub3_sublist_title"><a href="{$vo2['url']}" title="{$vo2['title']}">{$vo2['title']}</a></div>
+        <?php endif;?>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </li>
+    </volist>
+</ul>

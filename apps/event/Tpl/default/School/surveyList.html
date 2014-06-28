@@ -1,0 +1,22 @@
+<include file="_header" />
+<div class="hd_c">
+    <div class="hd_n_list">
+        <ul>
+            <volist name="data" id='vo'>
+            <li>
+                <div class="dy_title1 b h24">
+                    <a href="{:U('event/School/survey', array('id'=>$vo['id']))}" title="{$vo.title}">{$vo.title}</a></div>
+                <div class="dy_date"><?php if($vo['deadline'] <= time()):?>已结束
+                            <?php else:?><span class="green">进行中...</span>
+                            <?php endif;?>
+                </div>
+                <div class="dy_gz">{$vo.vote_num}人参与</div>
+            </li>
+            </volist>
+        </ul>
+        <div class="page">{$html}</div>
+    </div>
+    <div class="hd_c_right">
+        <include file="_right" />
+    </div>
+<include file="_footer" />

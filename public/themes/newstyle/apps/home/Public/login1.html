@@ -1,0 +1,77 @@
+<include file="__THEME__/header_mday_login" />
+<div class="c1">
+    <div class="login">
+        <div class="c1_login_title"><img src="__THEME__/newimages/login.gif" /></div>
+        <div class="clear"></div>
+        <div id="ppcontid" class="logform">
+            <form action="{:U('home/Public/doLogin')}" method="post">
+                <div class="frm" style="height:29px;*height:auto; position:relative">
+                    <label id="_login_school_label" class="form_label" style="display:block;" onclick="$(this).hide();selectSchool()">选择学校</label>
+                    <input type="text" id="selectarea" class="text" value="" readonly="true" OnFocus="$('#_login_school_label').hide();selectSchool()" />
+                    <input type="hidden" id="current" name="sid" />
+                </div>
+                <div class="frm" style="height:29px;*height:auto; position:relative">
+                    <label id="_login_email_label" class="form_label" style="display:block;" onclick="$(this).hide();$('#number').focus();">请输入学号</label>
+                    <input type="text" id="number" name="number" class="text" title="学号" autocomplete="off" value="" onblur="if($(this).val()=='') $('#_login_email_label').show();" onfocus="$('#_login_email_label').hide();" />
+                </div>
+                <div class="frm" style="height:29px;*height:auto; position:relative">
+                    <label id="_login_password_label" class="form_label" style="display:block;" onclick="$(this).hide();$('#password').focus();" >请输入密码，初始密码为6个1</label>
+                    <input type="password" title="密码" value="" id="password" name="password" class="text" style="display: inline;" onblur="if($(this).val()=='') $('#_login_password_label').show();" onfocus="$('#_login_password_label').hide();" />
+                </div>
+                <div class="frm" style="margin-top:8px; float:left;">
+                    <label>
+                        <input name="remember" type="checkbox" value="1" />
+                        记住登录状态</label>
+                    <a class="fuc0" href="{:U('home/Public/sendPassword')}">忘记密码？</a>
+                </div>
+                <div class="frm" style="margin:5px auto 25px auto; padding:0px; width:85px"><input type="submit" value="登 录" class="logbtn" /> </div>
+        </div>
+        <script>
+            $(document).ready(function(){
+                if($('#selectarea').val()!='') $('#_login_school_label').hide();
+                setInterval(function(){
+                    if('' != $('#number').val())$('#_login_email_label').hide();
+                    if('' != $('#password').val())$('#_login_password_label').hide();
+                }, 100);
+            });
+            function selectSchool(){
+                var typevalue = $("#current").val();
+                ui.box.load(U('home/Public/school')+'&selected='+typevalue,{title:'选择学校',noCheck:'yes'});
+            }
+        </script>
+    </div>
+    <div class="clear"></div>
+
+    <div class="c1_title b size">人气推荐</div>
+    <div class="c1_tj">
+        <div class="c1_tj_list">
+            <ul>
+                <volist name="hot_user" id="vo">
+                <li>
+                    <a target="_blank" href="{:U('home/Space/index',array('uid'=>$vo['uid']))}">
+                    <div class="c1_tj_list_photo"><img alt="{$vo.uid|getUserName}" src="{$vo.uid|getUserFace}"></div>
+                    <div class="c1_tj_list_name b">{$vo.uid|getUserName}</div>
+                    <div class="c1_tj_list_count">{$vo.count}</div>
+                    </a>
+                </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="c2">
+    {:W('Event',array('mid'=>$mid))}
+    <div class="c2_list3">
+        {:W('Threeapp')}
+    </div>
+</div>
+<div class="c3">
+    <div class="c3_menu1 b size">正在发生的</div>
+    <div class="c2_more"><a href="{:U('home/Square/')}">更多>></a></div>
+    <div class="c3_list i10">
+        {:W('WeiboList1', array('mid'=>$mid, 'list'=>$lastest_weibo, 'insert'=>0, 'num'=>10))}
+    </div>
+</div>
+
+<include file="__THEME__/footer1" />

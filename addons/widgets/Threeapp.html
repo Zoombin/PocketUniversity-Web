@@ -1,0 +1,66 @@
+<ul>
+    <volist id="vo" name="list" key="i">
+    <li <php>if($i==count($list)){</php> class="i8"<php>}</php>>
+        <div class="c2_list3_menu{$i-1} b size"><a href="{$vo.more}">{$vo.title}</a></div>
+        <div class="c2_more"><a href="{$vo.more}">更多>></a></div>
+        <?php $obj = $list[$i-1]['list'][0];?>
+        <div class="c2_list3_one">
+            <a href="{$obj['url']}" title="{$obj['title']}">
+            <div class="c2_list3_thumb">
+                <?php if($vo['title'] == '课件'):?>
+                    <?php if($obj['extension'] == 'pdf'):?>
+                        <img width="64" height="64" src="__THEME__/newimages/pdf.png" />
+                    <?php else:?>
+                        <img width="64" height="64" src="__THEME__/newimages/word.jpg" />
+                    <?php endif;?>
+                <?php else:?>
+                    <?php if($obj['path'] != ''):?>
+                        <img width="64" height="64" src="{$obj['path']}" />
+                    <?php endif;?>
+                <?php endif;?>
+            </div>
+            </a>
+            <div class="c2_list3_infor">
+                <div class="c2_list3_name">
+                    <a href="{$obj['url']}" title="{$obj['title']}">{$obj['title']}</a>
+                </div>
+                <div class="c2_list3_text">
+                    <?php if(isset($obj['readCount'])):?>
+                        <span class="red">{$obj['readCount']}</span>浏览<br/>
+                    <?php endif;?>
+                    <?php if(isset($obj['commentCount'])):?>
+                        <span class="red">{$obj['commentCount']}</span>评论<br/>
+                    <?php endif;?>
+                    <?php if(isset($obj['downloadCount'])):?>
+                        <span class="red">{$obj['downloadCount']}</span>下载
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+        <div class="c2_list3_sublist">
+            <ul>
+                <volist id="vo2" name="vo['list']" key="j">
+                <?php if($j>1):?>
+                <li>
+                    <a href="{$vo2['url']}" title="{$vo2['title']}">
+                    <div class="c2_list3_sublist_icon">
+                        <?php if($vo['title'] == '课件'):?>
+                            <em class="icon {$vo2['extension']}"></em>
+                        <?php else:?>
+                            <?php if($vo2['path'] != ''):?>
+                            <img src="{$vo2['path']}"  />
+                            <?php endif;?>
+                        <?php endif;?>
+                    </div>
+                    </a>
+                    <div class="c2_list3_sublist_title">
+                        <a href="{$vo2['url']}" title="{$vo2['title']}">{$vo2['title']}</a>
+                    </div>
+                </li>
+                <?php endif;?>
+                </volist>
+            </ul>
+        </div>
+    </li>
+    </volist>
+</ul>

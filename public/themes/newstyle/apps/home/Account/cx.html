@@ -1,0 +1,37 @@
+<include file="__THEME__/header" />
+<link rel="stylesheet" type="text/css" href="../Public/css/yg.css?140402">
+<div class="content_holder">
+    <div class="content"><!-- 内容 begin  -->
+        <div class="main no_l"> <!-- 右侧内容 begin  -->
+            <div class="mainbox">
+                <div class="mainbox_appC no_r">
+                    <!-- page_title end -->
+                    <include file="_tab" />
+                    <!-- 切换标签 end  -->
+                    <div class="mainbox_C_C">
+                        <div class="user_yg">
+<include file="left_cx" />
+<div class="user_yg_r">
+    <?php $cx=$userInfoCache['cx']?>
+    <div class="user_yg_r_title b f14">您当前诚信度 <span style="color: #FF0000;">{$cx.grad}</span></div>
+    <div class="charge_money_list">
+        <p class="much">缺席累计：{$cx.absent} </p>
+        <p class="much">当前状态：{$cx.status|cxStatus}</p>
+        <?php if($cx['status']==2):?>
+        <p class="much">禁止时间：{$cx.sday} 到 {$cx.eday}</p>
+        <?php endif;?>
+        <div class="text_charge_note f14">根据您所在学校设定，缺席累计达到{$schoolConfig.cxjg}次，将进行警告。
+            达到{$schoolConfig.cxjy}次，将禁止参加活动{$schoolConfig.cxday}天。</br> {$schoolConfig.cxday}天到期后缺席累计清零。</div>
+    </div>
+</div>
+  </div>
+                    </div><!-- mainbox_C_C end  -->
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容 end  -->
+        <div class="c"></div>
+    </div>
+</div>
+<!-- 内容 end -->
+<include file="__THEME__/footer" />

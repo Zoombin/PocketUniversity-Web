@@ -1,0 +1,67 @@
+<div class="c1_person">
+    <div class="c1_photo"><space uid="mid" class="nocard">{uavatar}</space></div>
+    <div class="c1_infor">
+        <div class="c1_name">{$userInfoCache['uname']}</div>
+        <div class="c1_jf">
+            <php>
+                $user_credit = $userInfoCache['credit'];
+                foreach($user_credit as $k => $v) {
+            </php>
+            <p>{$v['alias']}：<a href="{:U('home/Account/credit')}"><span class="cRed">{$v['credit']}</span></a></p>
+            <php>
+                }
+                unset($user_credit);
+            </php>
+        </div>
+    </div>
+</div>
+<php>if ($announcement['is_open'] && !empty($announcement['content'])) {</php>
+<div id="announcement">
+    <a class="del right hover" href="javascript:void(0);" onclick="$(this).parent().hide('slow');"></a>
+    <b class="ico_speaker"></b><a href="javascript:void(0)">{$announcement['content']}</a>
+</div>
+<php>}</php>
+<div class="c1_note">
+    <table width="237" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td><a href="{:U('home/space/follow',array('type'=>'following', 'uid'=>$mid))}">关注<br/>{$userInfoCache['following']}</a></td>
+            <td><a href="{:U('home/space/follow',array('type'=>'follower', 'uid'=>$mid))}">粉丝<br/>{$userInfoCache['follower']}</a></td>
+            <td><a href="{:U('home/space/index',array('uid'=>$uid))}">微博<br/>{$userInfoCache['miniNum']}</a></td>
+        </tr>
+    </table>
+</div>
+<div class="c1_list1 b size">
+    <ul>
+        <li><a href="{:U('home/user/index')}" {:getMenuState('user/index')}>我的首页</a></li>
+        <li><a href="http://mail.xyhui.com" target="_blank">我的收件箱</a></li>
+        <li><a href="{:U('home/user/atme')}" {:getMenuState('user/atme')}>查看@我</a></li>
+        <li><a href="{:U('home/user/collection')}" {:getMenuState('user/collection')}>我的收藏</a></li>
+        <li><a href="{:U('home/user/comments')}" {:getMenuState('user/comments')}>我的评论</a></li>
+    </ul>
+</div>
+<div class="c1_title b size">我的应用</div>
+<div class="c1_list2_action"><a href="{:U('home/Index/addapp')}">添加</a> <a href="{:U('home/Index/editapp')}">管理</a></div>
+<div class="c1_list2">
+    <ul>
+        <li>
+            <div class="c1_list2_title b">个人类</div>
+            {:W('Applist',array('install_app'=>$install_app,'category'=>'个人类'))}
+        </li>
+        <li>
+            <div class="c1_list2_title b">校方类</div>
+            {:W('Applist',array('install_app'=>$install_app,'category'=>'校方类'))}
+        </li>
+        <li>
+            <div class="c1_list2_title b">移动类</div>
+            {:W('Applist',array('install_app'=>$install_app,'category'=>'移动类'))}
+        </li>
+    </ul>
+</div>
+<php>
+function getMenuState($type){
+	$type = split('/',$type);
+	if( strtolower(MODULE_NAME)==strtolower($type[0]) && ( strtolower(ACTION_NAME)==strtolower($type[1]) || $type[1]=='*') ){
+		return 'class="on"';
+	}
+}
+</php>

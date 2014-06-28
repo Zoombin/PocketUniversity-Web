@@ -1,0 +1,81 @@
+<include file="../Public/header" />
+
+
+	<div class="view_header">
+		<div class="menu-wrapper">
+		<div class="menu">
+	        <a class="menu1" href="{:U('newcomer/Index/index')}"></a>
+	        <a class="menu2" href="{:U('newcomer/Index/news',array('c'=>1))}"></a>
+	        <a class="menu3" href="{:U('newcomer/Index/news',array('c'=>2))}"></a>
+	        <a class="menu4" href="{:U('newcomer/Index/news',array('c'=>3))}"></a>
+			<a class="menu5" href="{:U('home')}"></a>
+	    </div>
+		</div>
+	</div>
+<div class="view_banner">
+    <div class="view_banner01"></div>
+    <div class="view_banner02">
+        <!--<div class="view_jionus_box">
+            <a href="{:U('newcomer/Index/register')}"></a>
+        </div>!-->
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="view_content">
+	<div class="content_box view_news">
+		<div>
+			<div class="leftbox">
+	            <div class="box_header">
+	            	<span class="box_title">迎新快讯: {$document.category0|getDocCategoryName}</span>
+	            </div>
+	            <div class="box_content">
+	            	<div class="text_box">
+						<ul>
+						<php>foreach( $documents['data'] as $d ){</php>
+		            	<li class="news_title">
+							<a href="{:U('newcomer/Index/news',array(id=>$d['document_id']))}">
+							<php>echo "[".date("m",$d['mtime'])."-".date("d",$d['mtime'])."]";</php>
+                        	{$d['title']|t|getShort=###,12,'……'}</a>
+                        </li>
+						<php>}</php>
+						</ul>
+						&nbsp;
+	                </div>
+	            </div>
+	            <div class="box_bottom"></div>
+				</div>
+		    	<div class="rightbox">
+		            <div class="box_header">
+						<a class="box_back" href="{:U('newcomer/Index/index')}">返回首页</a>
+		            	<span class="box_title">资讯正文</span>
+		            </div>
+		            <div class="box_content">
+		            	<div class="text_box">
+		            		<div class="text_title">{$document.title}</div>
+		                    <div class="text_param">{$document.mtime|friendlyDate} 浏览次数：{$document.readCount}</div>
+		                    <div class="text_content">
+
+								{$document.content}
+
+								<br />&nbsp;
+		                  </div>
+		                </div>
+		            </div>
+		            <div class="box_bottom"></div>
+		        </div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="pics">
+			<php>foreach( $photos['data'] as $d ){</php>
+            <div class="pic">
+				<a href="{:U('newcomer/Index/news',array(id=>$d['document_id']))}"><img src="{$d['icon']|get_document_url}" /></a>
+			</div>
+			<php>}</php>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<include file="../Public/footer" />
+</body>
+</html>

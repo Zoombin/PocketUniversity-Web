@@ -1,0 +1,3 @@
+<?php
+//-00000000001a:13:{s:8:"weibo_id";s:4:"1492";s:3:"uid";s:5:"33654";s:7:"content";s:174:"苏州大学HOLD我的麦克风第一季精彩剪辑（独墅湖校区）—在线播放—优酷网，视频高清在线观看http://v.youku.com/v_show/id_XNDc3Nzg5NTE2.html";s:5:"ctime";s:10:"1393475447";s:4:"from";s:1:"0";s:7:"comment";s:1:"0";s:12:"transpond_id";s:1:"0";s:9:"transpond";s:1:"1";s:4:"type";s:1:"3";s:9:"type_data";s:394:"a:5:{s:8:"flashvar";s:13:"XNDc3Nzg5NTE2";s:8:"flashimg";s:86:"http://g4.ykimg.com/0100641F4650ABCDB31DCD08160991CC204793-884E-0C96-F0E0-17A13506C1BD";s:4:"host";s:9:"youku.com";s:6:"source";s:47:"http://v.youku.com/v_show/id_XNDc3Nzg5NTE2.html";s:5:"title";s:127:"苏州大学HOLD我的麦克风第一季精彩剪辑（独墅湖校区）—在线播放—优酷网，视频高清在线观看";}";s:9:"from_data";N;s:5:"isdel";s:1:"0";s:5:"heart";s:1:"2";}
+?>

@@ -1,0 +1,109 @@
+<include file="__THEME__/header" />
+<link rel="stylesheet" type="text/css" href="../Public/css/yg.css?140402">
+<script type="text/javascript" src="../Public/js/recharge.js?131218"></script>
+<div class="content_holder">
+    <div class="content"><!-- 内容 begin  -->
+        <div class="main no_l"> <!-- 右侧内容 begin  -->
+            <div class="mainbox">
+                <div class="mainbox_appC no_r">
+                    <!-- page_title end -->
+                    <include file="_tab" />
+                    <!-- 切换标签 end  -->
+                    <div class="mainbox_C_C">
+                        <div class="user_yg">
+<include file="left-menu" />
+<div class="user_yg_r">
+    <div class="user_yg_r_title b f14">余额查询/充值 (<span style="color: #FF0000;">兑换比例：人民币1元 = 1PU币</span>)</div>
+    <div class="text_charge_money">
+        <div class="text_charge_note f14">您当前的账户余额是：<span class="p5 b f18 fw">{$user.money|money2xs} PU币</span></div>
+        <div class="clear"></div>
+        <div class="charge_money_list">
+            <div class="charge_money_title b f14">账户充值</div>
+            <ul class="sel">
+                <li>充值金额：</li>
+                <li class="frist">
+                    <input id="ten" class="money" type="radio" name="much" checked="checked">
+                    <label for="ten" class="p5">10元</label>
+                </li>
+                <li>
+                    <input id="fifty" class="money" type="radio" name="much">
+                    <label for="fifty" class="p5">50元</label>
+                </li>
+                <li>
+                    <input id="hundred" class="money" type="radio" name="much">
+                    <label for="hundred" class="p5">100元</label>
+                </li>
+                <li>
+                    <input id="twohundred" class="money" type="radio" name="much">
+                    <label for="twohundred" class="p5">200元</label>
+                </li>
+                <li>
+                    <input id="other" class="money" type="radio" name="much">
+                    <label for="other" class="p5">其他</label>
+                </li>
+                <li>
+                    <input id="otherMoney" class="text" type="text" maxlength="6" value="" onkeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false; " onpaste="return false"> 元
+                </li>
+            </ul>
+            <ul class="payment">
+                <li class="top">
+                    <p>支付方式：&nbsp;</p>
+                    <input type="radio" checked="checked" id="ccb" name="account">
+                    <label for="ccb">
+                        <span class="ccb">中国建设银行</span>（<a style="color: #FF0000;font-weight: bold;">3月1日至5月15日优惠活动：
+                            1. 充十元（含）以上送2个PU币
+                            2. 每个帐户送币上限12元</a>）
+                    </label>
+                </li>
+                <li class="top">
+                    <p>支付方式：&nbsp;</p>
+                    <input type="radio" id="Tenpay" name="account">
+                    <label for="Tenpay">
+                        <span class="cft">财付通</span>（<a style="color: #FF0000;font-weight: bold;">财付通支付方式支持各大网银支付！没有财付通账号也可以用财付通支付！</a>）
+                    </label>
+                </li>
+                <li class="top">
+                    <p>支付方式：&nbsp;</p>
+                    <input type="radio" id="alipay" name="account">
+                    <label for="alipay">
+                        <span class="zfb">支付宝</span>（<a style="color: #FF0000;font-weight: bold;">支持各大网银支付!</a>）
+                    </label>
+                </li>
+            </ul>
+            <p class="much">应付金额：<span class="yf">￥<span id="Money">10</span></span></p>
+            <div class="charge_money_btn b">
+                <form target="_blank" method="post" action="{:U('home/Account/goPay')}" name="toPayForm" id="toPayForm">
+                    <input type="hidden" value="" name="payName" id="hidPayName">
+                    <input type="hidden" value="" name="money" id="hidMoney">
+                    <input type="submit" value="点此充值" name="submit" id="submit_ok">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+<!--充值提醒框开始-->
+  <div id="payAltBox" style="display:none;">
+    <div class="prompt_box">
+        <p class="pic">请您在新开的页面上完成支付！</p>
+        <p class="ts">付款完成之前，请不要关闭本窗口！<br>完成付款后跟据您的个人情况完成此操作！</p>
+        <ul>
+            <li><a class="look" href="{:U('home/Account/rechargeList')}">查看充值记录 </a></li>
+            <li><a id="btnReSelect" class="look" href="javascript:ui.box.close()">重选新支付</a></li>
+        </ul>
+    </div>
+  </div>
+  <!--充值提醒框结束-->
+                    </div><!-- mainbox_C_C end  -->
+                </div>
+            </div>
+        </div>
+        <!-- 右侧内容 end  -->
+        <div class="c"></div>
+    </div>
+</div>
+<!-- 内容 end -->
+<script type="text/javascript">
+
+</script>
+<include file="__THEME__/footer" />

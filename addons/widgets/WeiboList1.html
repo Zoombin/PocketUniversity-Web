@@ -1,0 +1,45 @@
+<ul class="feed_list" <eq name='insert' value='1'> id="feed_list"</eq>>
+    <?php $cnt = 0;?>
+    <volist id="vo" name="list">
+        <?php if($cnt<$num):?>
+        <?php if($vo['type']==0 && $vo['expend']==''):?>
+        <?php $cnt++;?>
+        <li class="lineD_btm <?php if($cnt==$num)echo'i9';?>" id="list_li_{$vo.weibo_id}">
+            <div>
+                <div class="msgCnt">
+                    <span class="bule b size"><space uid="vo.uid" >{uname}</space>：</span>
+                    <p style="vertical-align:top;display:inline">{$vo.content|getShort=60|login_emot_format}</p>
+                </div>
+                <?php if($insert == 1):?>
+                <div class="feed_c_btm">
+                    <span class="right c3_list_note">
+                        <if condition="$show eq 'detail'">
+                            {:Addons::hook('weibo_bottom_middle', array('weibo_id'=>$vo['weibo_id'], 'weibo'=>$vo))}
+                        </if>
+                        <php>if( $vo['uid'] == $mid ){</php>
+                        <a href="javascript:void(0)" onclick="ui.confirm(this,'{:L(\'del_confirm\')}')" callback="weibo.deleted({$vo.weibo_id})" title="删除">删</a>
+                        <i class="vline">|</i>
+                        <php>}</php>
+                        <a href="javascript:void(0)" onclick="weibo.transpond({$vo.weibo_id})" title="转发">转({$vo.transpond})</a>
+                        <i class="vline">|</i><a href="javascript:void(0)" rel="comment" minid="{$vo.weibo_id}"  title="评论">评({$vo.comment})</a>
+                        <if condition="$show eq 'detail'">
+                            {:Addons::hook('weibo_bottom_right', array($vo['weibo_id'], $vo))}
+                        </if>
+                        <i class="vline">|</i>
+                            <php>if($vo['is_hearted']){</php>
+                            赞({$vo.heart})
+                            <php>}else{</php>
+                            <a href="javascript:void(0)"  onclick="weibo.heart({$vo.weibo_id},this,{$vo.heart})"  title="点赞">赞({$vo.heart})</a>
+                            <php>}</php>
+                    </span>
+                </div>
+                <div id="comment_list_{$vo.weibo_id}" style=""></div>
+                <?php else:?>
+                <div class="c3_list_note"><span class="right">{$vo.ctime|friendlyDate}</span></div>
+                <?php endif;?>
+            </div>
+        </li>
+        <?php endif;?>
+        <?php endif;?>
+    </volist>
+</ul>

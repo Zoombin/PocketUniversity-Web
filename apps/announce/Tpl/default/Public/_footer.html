@@ -1,0 +1,21 @@
+                </div>
+                <div class="clear"></div>
+                <!--content-->
+		<div class="footer under-suggest">
+		<div class="footerLine"></div>
+        <div class="pu_f_note">
+       <php>
+        foreach($ts['footer_document'] as $k => $v) {
+            $v['url'] = isset($v['url']) ? $v['url'] : U('home/Public/document',array('id'=>$v['document_id']));
+            $ts['footer_document'][$k] = '<a href="'.$v['url'].'" target="_blank">'.$v['title'].'</a>';
+        }
+        echo implode('&nbsp;&nbsp;|&nbsp;&nbsp', $ts['footer_document']);
+        </php>
+	</div>
+                    {:W('FooterIcp')}
+                    <div></div>
+		</div>
+            </div>
+	</div>
+</body>
+</html>

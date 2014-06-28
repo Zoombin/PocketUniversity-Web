@@ -1,0 +1,33 @@
+/*活动打印页*/
+.hd_c_print{ float:left; width:900px; padding:20px 39px; color:#333;}
+.hd_print_title1{ float:left; width:900px; font-size:16px; text-align:center; line-height:30px;}
+.hd_print_list2_btn{ float:left;  margin:15px auto; width:820px; padding-bottom:12px; padding-left:80px; border-bottom:1px solid #dedede;line-height:22px;}
+.hd_print_list2_btn ul{ width:100%; float:left;}
+.hd_print_list2_btn li{ width:90px; float:left; margin-right:15px; margin-bottom:10px; display:inline; height:30px;  font-size:14px; line-height:30px; background:#ff8919; text-align:center;}
+.hd_print_list2_btn li a{ width:90px;height:30px; display:block; color:#FFF; text-decoration:none;}
+.hd_print_list2_btn li a:hover {color:#fff; text-decoration:none;width:90px; height:30px; display:block;}
+.hd_print_list2_btn a:visited{ text-decoration:none;}
+
+/*打印证书页面*/
+.hd_p_infor{ float:left; width:900px; padding:10px 0; text-align:center;}
+.hd_p_desc{float:left; width:898px; border-top:1px solid #dedede;border-left:1px solid #dedede; margin-top:20px; margin-bottom:20px; }
+.hd_p_desc td{ border-right:1px solid #dedede; border-bottom:1px solid #dedede; text-align:center; line-height:24px; overflow:hidden;}
+.hd_p_desc tr:hover{ background:#f0eeee;}
+.hd_p_desc_title{ float:left; width:380px; padding:4px 10px 0; text-align:left; line-height:20px; }
+.hd_p_desc_text{ float:left; line-height:18px; width:380px; padding:0 10px 4px; color:#666; text-align:left;}
+.hd_content{ float:left; width:978px; border:1px solid #e1e1e1; background:#fff; }
+.hd_content.print1{ border:none;}
+.clear{ clear:both;}
+/*公用*/
+*{ padding:0;margin:0;list-style:none;font-size:12px;}
+body{background:#f5f5f5;}
+.b{ font-weight:bold;}
+.red{ color:#c00;}
+.red a{color:#c00;}
+.red a:hover{ color:#d53636;}
+.bg{ width:100%; float:left; background:#f5f5f5;}
+.main{ width:980px; margin:auto; }
+.f14{ font-size:14px;}
+.f_wr{ font-family:"微软雅黑";}
+.h24{ height:24px; line-height:24px;}
+.h36{ line-height:36px; height:36px;}

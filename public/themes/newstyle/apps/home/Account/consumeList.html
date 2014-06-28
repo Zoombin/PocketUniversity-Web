@@ -1,0 +1,59 @@
+<include file="__THEME__/header" />
+<link rel="stylesheet" type="text/css" href="../Public/css/yg.css?140402">
+<div class="content_holder">
+    <div class="content"><!-- 内容 begin  -->
+        <div class="main no_l"> <!-- 右侧内容 begin  -->
+            <div class="mainbox">
+                <div class="mainbox_appC no_r">
+                    <!-- page_title end -->
+                    <include file="_tab" />
+                    <!-- 切换标签 end  -->
+                    <div class="mainbox_C_C">
+<div class="user_yg">
+    <include file="left-menu" />
+    <div class="user_yg_r">
+        <div class="user_yg_r_title b f14">消费记录</div>
+        <div class="consumer_records c_r_link">
+            <div class="inquiry">
+                共查询到<span class="c1">{$totalRows}</span>条记录 &nbsp;&nbsp;&nbsp;<a href="{:U('home/Account/recharge')}">立即充值</a>
+            </div>
+            <div class="c_r_list mt10">
+                <ul>
+                    <li class="c3">
+                        <div class="c_r_time" style="color:#333;">消费时间</div>
+                        <div class="c_r_consum">消费商品</div>
+                        <div class="c_r_do">消费金额</div>
+                    </li>
+                    <?php if(empty($data)):?>
+                    <!--无列表显示-->
+                        <li class="notFound">查无消费记录</li>
+                    <?php else:?>
+                    <!--有列表显示-->
+                        <volist name="data" id='vo'>
+                            <li>
+                                <div class="c_r_time">{$vo.out_ctime|friendlyDate}</div>
+                                <div class="c_r_consum">
+                                    <?php if($vo['out_url']):?>
+                                        <a href="{$vo.out_url}" target="_blank">{$vo.out_title}</a>
+                                    <?php else:?>
+                                        {$vo.out_title}
+                                    <?php endif;?>
+                                </div>
+                                <div class="c_r_do c1">{$vo.out_money|money2xs} PU币</div>
+                            </li>
+                        </volist>
+                    <?php endif;?>
+                </ul>
+                <div class="page">{$html}</div>
+            </div>
+        </div>
+    </div>
+</div>
+                    </div><!-- mainbox_C_C end  -->
+                </div>
+            </div>
+        </div>
+    <div class="c"></div>
+    </div>
+</div>
+<include file="__THEME__/footer" />

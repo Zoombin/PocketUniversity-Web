@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>第四届“五四杯”高校团委书记羽毛球交流赛</title>
+        <link href="../Public/css/ymq.css" type="text/css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <?php if($list['status'] == 0): ?>
+            <div class="bg">
+                <div class="main">
+                    <div class="y_btn"><a href="{:U('home/Public/cq',array('c'=>1))}"><img src="../Public/images/ymq/btn.jpg" alt="点此抽签" /></a></div>
+                    <div class="clear"></div>
+                    <div class="y_footer">PocketUni版权所有 苏ICP备12046592号-2 经营性ICP：苏 B2-20130213</div>
+                </div>
+            </div>
+        <?php else: ?>
+        <div class="bg desc">
+            <div class="main">
+                <div class="y_list">
+                    <ul>
+                        <li>学校：{$list.school}</li>
+                        <li>乒乓球单打：{$list.n1}</li>
+                        <li>羽毛球男子单打：{$list.n2}</li>
+                        <li>羽毛球女子单打：{$list.n3}</li>
+                        <li>羽毛球双打打：{$list.n4}</li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="y_footer">PocketUni版权所有 苏ICP备12046592号-2 经营性ICP：苏 B2-20130213</div>
+            </div>
+        </div>
+        <?php endif; ?>
+
+    </body>
+</html>

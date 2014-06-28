@@ -1,0 +1,119 @@
+<?php if($smid) :?>
+<!--顶部导航-->
+<div class="header_holder">
+    <div class="header">
+        <div class="school_holder">
+            <div class="logo"><a href="{:U('home/Index')}" ><img src="{$ts['site']['site_logo']}" /></a></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="{$user['schoolEvent']['domain']|getDomainLink}" class="fb14 b" style="font-size:17px;">大学生成长服务平台</a></li>
+                    <?php if(isAllAdmin($mid)):?>
+                    <li><a href="javascript:void(0)" class="fb14" title="切换学校" onclick="changeSchoolDomain()">[切换]</a></li>
+                    <script>
+                    function changeSchoolDomain(){
+                        ui.box.load(U('home/Public/changeSchoolDomain'),{title:'选择学校',noCheck:'yes'});
+                    }
+                    </script>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+        <!--个人信息区-->
+        <ul class="person">
+            <li>{:getUserSpace($mid,'fb14 username nocard','','',false)}</li>
+            <li><a class="fb14">课时：{$user['course_credit']}
+                </a>
+            </li>
+            <li class="header_dropdown" onclick="userManage(this);"><a href="javascript:void(0)" class="application">管理中心<span class="ico_arrow"></span></a>
+                <div class="dropmenu">
+                    <dl class="setup">
+                        <dd><a href="{:U('home/Account')}"><span class="ico_pub ico_pub_set"></span>个人中心</a></dd>
+                        <dd><a href="{:U('home/Account/recharge')}"><span class="ico_pub ico_pub_skin"></span>充值中心</a></dd>
+                        <dd><a href="{:U('shop/Myshop/myDonate')}"><span class="ico_pub ico_pub_gift"></span>我的乐购</a></dd>
+                          <?php if($rights['canBackend']): ?> <dd><a href="{:U('event/CoursePass/index')}"><span class="ico_pub ico_pub_admin"></span>职业规划后台</a></a></dd><?php endif; ?>
+                    </dl>
+                    <dl class="square_list_add">
+                        <dd><a href="{:U('event/CourseAdmin/logout')}"><span class="ico_pub ico_pub_signout"></span>退出</a></dd>
+                    </dl>
+                </div>
+            </li>
+        </ul>
+        <!--/个人信息区-->
+        <!--消息提示框-->
+        <div id="message_list_container" class="layer_massage_box" style="display:none;">
+            <ul class="message_list_container">
+            </ul>
+            <a href="javascript:void(0)" onclick="ui.closeCountList(this)" class="del"></a>
+        </div>
+        <!--/消息提示框-->
+    </div>
+    <!--新加导航开始-->
+      <div class="pu_menu">
+       <div class="pu_mlist">
+              <ul>
+               <li><a href="{:U('home/Index/index')}"><img src="__THEME__/images/menu/menu_1.png" onmouseover="src='__THEME__/images/menu/menu_11.png'"  onmouseout="src='__THEME__/images/menu/menu_1.png'"/></a></li>
+               <li><a href="{:U('announce/Index/notice')}"><img src="__THEME__/images/menu/menu_2.png" onmouseover="src='__THEME__/images/menu/menu_22.png'"  onmouseout="src='__THEME__/images/menu/menu_2.png'"/></a></li>
+              </ul>
+              </div>
+             </div>
+             <!--新加导航结束-->
+</div>
+<!--/顶部导航-->
+<?php else:?>
+<div class="header_holder">
+    <div class="header">
+        <div class="school_holder">
+            <div class="logo"><a href="{http://{:get_host_needle()}/index.php?app=home&mod=Public&act=login}" ><img src="{$ts['site']['site_logo']}" /></a></div>
+            <div class="nav">
+                <ul>
+                    <li><a href="{:getUrlDomain()}" class="fb14 b" style="font-size:17px;">江苏省大学生成长服务平台</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="login">
+            <form action="{:U('event/CourseAdmin/doLogin')}" method="post">
+                学号：<input name="number" type="text" class="login_input" />
+                密 码：<input name="password" type="password" class="login_input" />
+                <input name="tj" type="submit" class="login_btn" value="登录" />
+                <a  href="{:U('home/Public/sendPassword')}">忘记密码？</a>
+            </form>
+        </div>
+    </div>
+ <!--新加导航开始-->
+      <div class="pu_menu">
+       <div class="pu_mlist">
+              <ul>
+               <li><a href="{http://{:get_host_needle()}/index.php?app=home&mod=Public&act=login}"><img src="__THEME__/images/menu/menu_1.png" onmouseover="src='__THEME__/images/menu/menu_11.png'"  onmouseout="src='__THEME__/images/menu/menu_1.png'"/></a></li>
+               <li><a href="{:U('announce/Index/notice')}"><img src="__THEME__/images/menu/menu_2.png" onmouseover="src='__THEME__/images/menu/menu_22.png'"  onmouseout="src='__THEME__/images/menu/menu_2.png'"/></a></li>
+               <li><a href="{:U('home/Account/recharge')}"><img src="__THEME__/images/menu/menu_3.png" onMouseOver="src='__THEME__/images/menu/menu_33.png'"  onmouseout="src='__THEME__/images/menu/menu_3.png'"/></a></li>
+              </ul>
+              </div>
+             </div>
+             <!--新加导航结束-->
+</div>
+<?php endif;?>
+
+<script>
+    $(document).ready(function () {
+        $(".header_dropdown").hover(
+        function(){ $(this).addClass("hover"); },
+        function(){ $(this).removeClass("hover"); }
+    );
+            <php>if($mid > 0) {</php>
+                ui.countNew();
+            setInterval("ui.countNew()",100000);
+                <php>}</php>
+
+            $('.platform').bind('mouseover', function() {
+            $('.platform-menu').removeClass('hidden');
+        });
+        $('.platform').bind('mouseout', function() {
+            $('.platform-menu').addClass('hidden');
+        });
+    });
+    function userManage(o){
+        $(o).toggleClass('hover');
+    }
+</script>
+
+

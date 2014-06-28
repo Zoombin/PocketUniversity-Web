@@ -1,0 +1,36 @@
+/*#lwc,   #rwc   {
+width:126px;
+height:282px;
+background:#009999;
+}*/
+#lwca,   #rwca   {
+width:97px;
+height:97px;
+background:#009999;
+}
+#lwc,   #rwc   {
+width:150px;
+height:220px;
+background:#009999;
+}
+.ad_close{
+	height: 13px;
+	width: 13px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	background-image:url(../images/close_1.gif);
+	background-repeat: no-repeat;
+	margin-top: 2px;
+	margin-right: 2px;
+}
+#lwc,#rwc,#lwc_c,#rwc_c {
+display:none;
+}
+#lwca,#rwca,#lwc_ca,#rwc_ca {
+display:none;
+}
+#lwcb,#rwcb,#lwc_cb,#rwc_cb {
+display:none;
+}

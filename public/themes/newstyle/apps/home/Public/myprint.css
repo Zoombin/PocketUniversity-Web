@@ -1,0 +1,61 @@
+/*打印活动*/
+.hd_print{ float:left; width:940px;}
+.hd_print_title{ float:left; height:24px; line-height:24px; margin:20px auto auto 60px; display:inline; width:500px;}
+.hd_print_input{ height:24px; line-height:24px; border:1px solid #dedede; width:300px; padding:0px 5px; color:#666;}
+.hd_print_desc{float:left; width:500px; margin:20px auto auto 60px; display:inline;}
+.hd_print_btn1{ float:left; cursor:pointer; background:url(images/bg_btn5.gif) no-repeat; width:80px; height:30px; line-height:30px; color:#FFF; text-align:center; margin:20px auto auto 60px; display:inline;}
+.hd_print_list1{float:left; width:660px; margin:20px auto auto 10px; display:inline; border-top:1px solid #dedede;}
+.hd_print_list1 ul{float:left; width:100%;}
+.hd_print_list1 li{float:left; width:640px; border-bottom:1px solid #dedede; line-height:22px; padding:10px;}
+.hd_print_list1 li:hover{ background:#e8e8e8;}
+.hd_print_list1_thumb{float:left; width:100px; height:100px; border:1px solid #dedede; padding:1px; background:#fff;}
+.hd_print_list1_thumb img{ width:100px; height:100px;}
+.hd_print_list1_infor{float:left; margin-left:15px; display:inline;}
+.hd_print_list1_organizer{float:left; margin-left:25px; display:inline;}
+.hd_print_list1_del{ float:right; background:#ff840f; width:60px; text-align:center; height:24px; line-height:24px; }
+.hd_print_list1_del a{ color:#fff;}
+.hd_print_list1_del a:hover{ color:#f8e4d1; text-decoration:none;}
+.hd_print_list1_btn{ float:left; margin:15px auto auto 300px; display:inline; padding-bottom:12px; font-size:14px;}
+.hd_print_btn2{ border:none; width:90px; height:30px; line-height:30px; background:#ff8919; text-align:center; cursor:pointer; color:#fff;}
+.hd_print_btn2 a{ color:#FFF; width:90px; height:30px; display:block; background:#ff8919;}
+.hd_print_btn2 a:hover{color:#FFF; width:90px; height:30px; display:block; text-decoration:none}
+/*选择活动提示框*/
+.hd_print_tip1{ width:600px; float:left; border:2px solid #98c562; background:#fff;  margin:15px auto auto 60px; display:inline;}
+.hd_print_tip1_title{float:left;  background:url(images/bg_tipline.gif) repeat-x; height:23px; line-height:23px; font-family:"微软雅黑"; padding-left:10px; width:590px; border-bottom:1px solid #c5c5a9; font-size:14px;}
+.hd_print_tip1_list{ float:left; width:600px;  line-height:24px; overflow-y:auto; overflow-x:hidden; padding-bottom:10px; max-height:350px; height:expression(document.body.clientHeight > 350px "350px": "auto" );/*for ie6*/
+ }
+.hd_print_tip1_list_select{ float:left; width:550px; margin:4px auto auto 25px; color:#333; padding-bottom:5px; display:inline; }
+.hd_print_tip1_list ul{ float:left; width:560px; border-top:1px solid #dedede; padding:5px 20px 10px 20px;}
+.hd_print_tip1_list li{ float:left; margin:auto 15px 5px 5px; width:540px;  display:inline; white-space: nowrap; clear:both; word-break:break-all;word-wrap:break-word }
+/*活动打印页*/
+.hd_c_print{ float:left; width:900px; padding:20px 39px; color:#333;}
+.hd_print_title1{ float:left; width:900px; font-size:16px; text-align:center; line-height:30px;}
+.hd_print_desc1{ float:left; width:900px; overflow:hidden; line-height:24px; margin-top:15px;}
+.hd_print_menu{ float:left; width:885px; font-size:14px; margin:20px auto auto 15px; display:inline;}
+.hd_print_list2{float:left; width:900px; margin:10px; display:inline; border-top:1px solid #dedede;}
+.hd_print_list2 ul{float:left; width:100%;}
+.hd_print_list2 li{float:left; width:880px; border-bottom:1px solid #dedede; line-height:22px; padding:10px;}
+.hd_print_list2_thumb{float:left; width:100px; height:100px; border:1px solid #dedede; padding:1px; background:#fff;}
+.hd_print_list2_thumb img{ width:100px; height:100px;}
+.hd_print_list2_infor{float:left; margin-left:35px; display:inline; width:300px;}
+.hd_print_list2_organizer{float:left; margin-left:25px; display:inline;}
+.hd_print_list2_btn{ float:left;  margin:15px auto; width:820px; padding-bottom:12px; padding-left:80px; font-size:14px; border-bottom:1px solid #dedede;}
+.hd_print_btn3{ width:800px; margin:auto; text-align:center;}
+.hd_print_list2_btn ul{ width:100%; float:left;}
+.hd_print_list2_btn li{ width:90px; float:left; margin-right:15px; display:inline; height:30px; line-height:30px; background:#ff8919; text-align:center;}
+.hd_print_list2_btn li a{ width:90px;height:30px; display:block; color:#FFF;}
+.hd_print_list2_btn li a:hover {color:#fff; text-decoration:none;width:90px; height:30px; display:block;}
+.hd_print_list2_btn a:visited{ text-decoration:none;}
+/*打印列表*/
+.b{ font-weight:bold;}
+.hd_print_list3{ float:left; width:900px; margin:10px 20px auto 20px; display:inline; border-bottom:1px solid #dedede;}
+.hd_print_list3 ul{ float:left; width:100%;}
+.hd_print_list3 li{ float:left; width:890px; margin:5px auto auto 5px; border-bottom:1px dashed #dedede; padding-bottom:3px; line-height:26px; height:26px; }
+.hd_print_list3 li.print{ border:none;}
+.hd_print_list3_title{ float:left; width:700px; padding-left:5px; height:26px; overflow:hidden;}
+.hd_print_list3_title a{ color:#e78414;}
+.hd_print_list3_title a:hover{ color:#f09732;}
+.hd_print_list3_time{ float:left; width:100px; text-align:center; margin-left:30px; display:inline;}
+.hd_print_list3_del{ float:right; width:35px; text-align:left;}
+.hd_print_list3_del a{ color:#a67107;}
+.hd_print_list3_del a:hover{ color:#b37e14;}

@@ -1,0 +1,13 @@
+<?php if($type==1):?>
+<input type="text" name="para{$id}" value="" size="40"/>
+<?php elseif($type==2):?>
+<textarea name="para{$id}" rows="5" cols="60"></textarea>
+<?php elseif($type==3):?>
+<input id="file{$id}" name="para{$id}" type="hidden" value="" />
+<input type="button" onclick="openUploadFile({$id});" value="上传文件"/>
+<span id="para{$id}" style="border:1px solid #00ff00;margin-left:10px;padding:0 5px;"></span>
+<span id="del{$id}"></span>
+<br /><span class="cGray2">（不大于2MB,支持格式jpg,gif,png,jpeg,bmp,zip,rar,doc,xls,ppt,docx,xlsx,pptx,pdf）</span>
+<?php elseif($type==4):?>
+<input size="50" type="text" name="para{$id}" value=""  /><br/><span class="cGray2">请输入新浪秒拍、优酷网、酷6网的视频播放页链接</span>
+<?php endif; ?>

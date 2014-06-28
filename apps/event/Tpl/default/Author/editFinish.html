@@ -1,0 +1,65 @@
+<include file="_header" />
+
+<div class="member_c">
+    <include file="_finishTop" />
+    <?php if($canFinish):?>
+    <form action="{:U('/Author/doFinish',array('id'=>$eventId))}" enctype="multipart/form-data" method="post">
+        <div class="member_add">
+            <table width="900" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td></td>
+                    <td align="right">照片：</td>
+                    <td><span class="red">*</span> </td>
+                    <td>
+                        <if condition="$print_img">
+                            <img src="{$print_img|getThumb=###,125,125}"><br/>
+                        </if>
+                        <input name="upfile" id="face" type="file" class="member_input1" >
+                        <br/><span style="color:#666;font-size:10px;"> 图片不大于2MB</span>
+                    </td>
+                </tr>
+                <tr><td height="8" colspan="20"></td></tr>
+                <tr>
+                    <td></td>
+                    <td align="right">总结：</td>
+                    <td><span class="red">*</span> </td>
+                    <td><textarea id="print_text" name="print_text" style="width:250px; height:200px;resize: none" onKeyUp="gbcount(this,200);">{$print_text|showBr|br2nl}</textarea>
+                    <span  id='remain' style='color:green;'>200</span><span style='color:green;'>/200字</span></td>
+                </tr>
+                <tr><td height="8" colspan="20"></td></tr>
+                <tr>
+                    <td></td>
+                    <td align="right">活动经费：</td>
+                    <td><span class="red"></span> </td>
+                    <gt name="pay" value="0">
+                    <td><input type="text" name="pay"  value="{$pay}" ></td>
+                    <else/>
+                    <td><input type="text" name="pay"  value="" ></td>
+                    </gt>
+                </tr>
+            </table>
+        </div>
+        <div class="member_btn">
+            <input type="submit" value="确定" class="member_btn1" />
+        </div>
+    </form>
+    <?php endif;?>
+</div>
+<script>
+    $(function(){
+        gbcount('#print_text',200);
+    });
+    function gbcount(o,max){
+        var msg = $(o).val();
+        msg = msg.replace('\n',"<br />");
+        var rest = max - msg.length;
+        if(rest < 0){
+            rest = 0;
+            $('#remain').html(0);
+            $(o).val(msg.substring(0,max));
+            alert('不能超过'+max+'个字!');
+        }
+        $('#remain').html(rest);
+    }
+</script>
+<include file="_footer" />

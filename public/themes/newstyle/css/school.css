@@ -1,0 +1,48 @@
+@charset "utf-8";
+.clear{ clear:both;}
+.school_bg{background: none repeat scroll 0 0 rgba(0, 0, 0, 0.45); border-collapse: collapse; width:650px; height:490px; border-radius: 7px 7px 7px 7px; margin: auto; table-layout: fixed;}
+.school_c{ margin:10px; display:inline; line-height:22px; width:628px;height:455px; background:#fff; float:left; border:1px solid #005eac; position:relative; padding-top:13px;}
+.school_d{ margin:10px; display:inline; line-height:22px; width:628px; background:#fff; float:left; border:1px solid #005eac; position:relative; padding-top:13px;}
+.school_p{ margin:10px; display:inline; line-height:22px; width:628px;height:270px; background:#fff; float:left; border:1px solid #005eac; position:relative; padding-top:13px;}
+.school_title{ background:#3777bc; height:30px; line-height:30px; color:#fff; width:100%; text-indent:20px; font-size:14px; font-weight:bold;}
+.school_search{ float:left; width:600px; margin:8px auto auto 14px; display:inline;}
+.school_s_title{ float:left; width:40px;}
+.school_s_input{ border:1px solid #dedede; height:18px; line-height:18px; padding:1px 3px; width:180px;}
+.school_province{ float:left; width:590px; margin:5px auto auto 13px; display:inline; height:50px; border:1px solid #dedede; padding:5px;overflow-y:auto;}
+.school_province ul{ float:left; width:100%;}
+.school_province li{ float:left;  height:22px; line-height:22px; padding:0 3px;}
+.school_province li a{ color:#005eac;padding:0 3px;}
+.school_province li a:hover{ color:#0f6fbf;padding:0 3px;}
+.school_province .school1{color:#fff; background:#005eac; padding:0 3px;}
+.school_province .school1 a{color:#fff; background:#005eac; padding:0 3px;}
+.school_province .school1 a:hover{ color:#fff; background:#005eac; padding:0 3px; text-decoration:none;}
+.school_college{ float:left;width:590px; margin:10px auto auto 13px; height:130px; display:inline; border:1px solid #dedede; padding:5px; overflow-y:auto;}
+.school_college ul{ float:left; width:100%;}
+.school_college li{ float:left; width:170px; margin-left:9px; display:inline; background:url(../images/icon_school.gif) no-repeat left 9px; padding-left:12px;text-align:left;}
+.school_college li a{color:#005eac;}
+.school_college li a:hover{background:#005eac; color:#fff; text-decoration:none;}
+.school_college .school1{color:#fff; background:#005eac;}
+.school_college .school1 a{color:#fff; background:#005eac;}
+.school_college .school1 a:hover{ color:#fff; background:#005eac;text-decoration:none;}
+.school_train{ float:left;width:590px; margin:10px auto auto 13px; height:130px; display:inline; border:1px solid #dedede; padding:5px; overflow-y:auto;}
+.school_train ul{ float:left; width:100%;}
+.school_train li{ float:left; width:70px; margin-left:9px; display:inline; background:url(../images/icon_school.gif) no-repeat left 9px; padding-left:12px;text-align:left;}
+.school_train li a{color:#005eac;}
+.school_train li a:hover{background:#005eac; color:#fff; text-decoration:none;}
+.school_train .school1{color:#fff; background:#005eac;}
+.school_train .school1 a{color:#fff; background:#005eac;}
+.school_train .school1 a:hover{ color:#fff; background:#005eac;text-decoration:none;}
+
+.school_close{ float:right; width:85px; background:#f0f5f8; height:33px; border-top:1px solid #dedede;padding:7px 13px 7px 530px;margin-top:80px;}
+.school_btn{ text-align:center; width:60px; height:33px; line-height:33px; color:#fff; font-weight:bold; cursor:pointer; background:#005eac; border:1px solid #8fb7e4;}
+.train_close{ float:right; width:185px; background:#f0f5f8; height:33px; border-top:1px solid #dedede;padding:7px 13px 7px 430px;margin-top:80px;}
+.train_btn{ text-align:center; width:80px; height:33px; line-height:33px; color:#fff; font-weight:bold; cursor:pointer; background:#005eac; border:1px solid #8fb7e4;margin-right: 10px;}
+
+/*校园部落 学校切换*/
+.school_p1{ margin:10px; display:inline; line-height:22px; width:628px;height:350px; background:#fff; float:left; border:1px solid #005eac; position:relative; padding-top:13px;}
+.school_bl{float:left;width:590px; margin:10px auto auto 13px; height:260px; display:inline; border:1px solid #dedede; padding:5px; overflow-y:auto;}
+.school_bl ul{ float:left; width:100%;}
+.school_bl li{ float:left; width:170px; margin-left:9px; display:inline; background:url(../images/icon_school.gif) no-repeat left 9px; padding-left:12px;text-align:left;}
+.school_bl li a{color:#005eac;}
+.school_bl li a:hover{background:#005eac; color:#fff; text-decoration:none;}
+.school_close1{ float:right; width:85px; background:#f0f5f8; height:33px; border-top:1px solid #dedede;padding:7px 13px 7px 530px;margin-top:20px;}

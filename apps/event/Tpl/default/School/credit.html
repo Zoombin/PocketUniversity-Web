@@ -1,0 +1,51 @@
+<include file="_header" />
+
+<div class="hd_c i1">
+        <div class="ranktab1" id="ranktab">
+            <div class="clear"></div>
+            <div id="tabcon" class="tabcon">
+                <div>
+                    <ul>
+                        <li>
+                            <table width="940" border="0" cellspacing="0" cellpadding="0">
+                            <tr class="b" style="color:#333; height:36px; line-height:36px;">
+                                    <td colspan="7" class="rank4 f14"> 参加活动明细</td>
+                                </tr>
+                                <tr class="b" style="color:#333; height:32px; line-height:32px;">
+                                    <td style="width:400px;"> 活动名称</td>
+                                    <td>签到</td>
+                                    <td>报名时间</td>
+                                    <td>活动积分</td>
+                                    <td>{$webconfig.cradit_name}</td>
+                                    <td>附加{$webconfig.cradit_name}</td>
+                                    <td class="rank4">附加积分</td>
+                                </tr>
+                                <?php foreach($data as $key=>$vo):?>
+                                <tr>
+                                    <td >{$vo.title}</td>
+                                    <td>
+                                        <eq name="vo['status']" value="2">
+                                        是
+                                        <else/>
+                                        否
+                                        </eq>
+                                    </td>
+                                    <td>{$vo.cTime|friendlyDate}</td>
+                                    <td>{$vo.score}</td>
+                                    <td>{$vo.credit}</td>
+                                    <td>{$vo.addCredit}</td>
+                                    <td class="rank4">{$vo.addScore}</td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            <div class="page plist">{$html}</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+<!--<div class="hd_c_right">
+    <include file="_right" />
+</div>-->
+<include file="_footer" />

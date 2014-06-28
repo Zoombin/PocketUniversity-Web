@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- QQ登录 -->
+<meta property="qc:admins" content="61701556566401633636375" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+<neq name="ts['site']['page_title']" value="">
+    {$ts['site']['page_title']} <neq name="ts['app']['app_alias']" value="">- {$ts['app']['app_alias']} </neq>- {$ts['site']['site_name']}
+<else/>
+    {$ts['site']['site_name']} <neq name="ts['site']['site_slogan']" value=""> - {$ts['site']['site_slogan']}</neq>
+</neq>
+</title>
+<link rel="shortcut icon" href="__THEME__/favicon.ico" />
+<meta property="wb:webmaster" content="a4bee774a4fe89c7" />
+<meta name="keywords" content="{$ts['site']['site_header_keywords']}" />
+<meta name="description" content="{$ts['site']['site_header_description']}" />
+<script>
+	var _UID_   = <php> echo (int) $uid;</php>;
+	var _MID_   = <php> echo (int) $mid;</php>;
+	var _ROOT_  = '__ROOT__';
+	var _THEME_ = '__THEME__';
+	var _PUBLIC_ = '__PUBLIC__';
+	var _LENGTH_ = <php> echo (int) $GLOBALS['ts']['site']['length'];</php>;
+	var _LANG_SET_ = '<php> echo LANG_SET;</php>';
+	var $CONFIG = {};
+		$CONFIG['uid'] = _UID_;
+		$CONFIG['mid'] = _MID_;
+		$CONFIG['root_path'] =_ROOT_;
+		$CONFIG['theme_path'] = _THEME_;
+		$CONFIG['public_path'] = _PUBLIC_;
+		$CONFIG['weibo_length'] = <php> echo (int) $GLOBALS['ts']['site']['length'];</php>;
+		$CONFIG['lang'] =  '<php> echo LANG_SET;</php>';
+    var bgerr;
+    try { document.execCommand('BackgroundImageCache', false, true);} catch(e) {  bgerr = e;}
+</script>
+<include file="__THEME__/comm/_header" />
+{:Addons::hook('public_head',array('uid'=>$uid))}
+</head>
+
+<body>
+<include file="__THEME__/_holder" />
+<div class="bg christmas">
+  <div class="main">
+    <div class="content  christmas1">
